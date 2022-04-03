@@ -3,8 +3,13 @@ body {
   font-family: "Roboto", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: justify;
+  overflow-x: hidden;
 }
-
+body::-webkit-scrollbar {
+  width: 0px;               /* width of the entire scrollbar */
+}
+ 
 code {
   font-family: "Roboto";
 }
