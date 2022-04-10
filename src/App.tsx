@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Loader from 'react-ts-loaders/dist';
-import { Home } from './AppRoutes';
+import { Dashboard, Home } from './AppRoutes';
 
 export interface IApplicationProps {}
 
@@ -16,6 +16,7 @@ const App: React.FC<IApplicationProps> = (props) => {
          <BrowserRouter>
           <Routes>
             <Route path = '/' element={<Home />} />
+            <Route path = '/dashboard' element={<Dashboard />} />
           </Routes>
          </BrowserRouter>
       </Suspense>
