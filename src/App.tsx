@@ -1,11 +1,26 @@
-import { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
+import { Header } from './components'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Loader from 'react-ts-loaders/dist';
+import { Dashboard, Home } from './AppRoutes';
 
-function App() {
+export interface IApplicationProps {}
 
+const App: React.FC<IApplicationProps> = (props) => {
   return (
-    <div>Hello World!</div>
+    <div>
+      <Suspense fallback={<Loader />}>
+        <Header />
+         <BrowserRouter>
+          <Routes>
+            <Route path = '/' element={<Home />} />
+            <Route path = '/dashboard' element={<Dashboard />} />
+          </Routes>
+         </BrowserRouter>
+      </Suspense>
+    </div>
   )
 }
 
