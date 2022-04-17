@@ -1,5 +1,12 @@
-import { Row, Container, Col } from 'react-bootstrap'
+import React from 'react';
+import { Row, Container, Col, Button } from 'react-bootstrap'
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import CSS from 'csstype';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { link } from '../utils/link';
+import { useModal } from '../hooks/useModal';
+import { Share } from './modal';
+export type BodyHomePros = {}
 
 const H2FontStyle: CSS.Properties = {
   fontStyle: 'normal',
@@ -19,7 +26,17 @@ const PStyle: CSS.Properties = {
   textAlign: 'justify'
 }
 
-export function BodyHome (){
+const BorderStyleShare: CSS.Properties = {
+  borderRadius: '70%',
+}
+
+const message = `https://api.whatsapp.com/send?phone=+551998769-3143&text=${link['localizacao']}`
+
+console.log(message)
+
+export const BodyHome: React.FC<BodyHomePros> = () => {
+  const { isShow, toggle } = useModal();
+  
   return(
     <div>
       <Row >
@@ -46,8 +63,16 @@ export function BodyHome (){
           </Container>
           </Col>
           <Col className="p-3">
-          <h2 style={H2FontStyle}>Localização</h2>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.426860414215!2d-47.130923485033136!3d-22.971325684979053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c9071741f5d7%3A0xdf08bcb82f758540!2skit%20festa%20em%20campinas%20Rainha%20do%20Salgados!5e0!3m2!1spt-BR!2sbr!4v1648392051865!5m2!1spt-BR!2sbr" 
+            <div className="d-flex align-items-center justify-content-between">
+            <h2 style={H2FontStyle}>Localização</h2>
+            <Button onClick={toggle} variant="link" className='d-flex text-dark text-decoration-none px-4'>
+           <div className="d-flex border p-1 align-items-center" style={BorderStyleShare}>
+              <FontAwesomeIcon  icon={faShareAlt} />
+              </div><span className='px-1'>Compartilhar</span>  
+            </Button>
+            <Share isShow={isShow} hide={toggle}/>
+            </div>
+          <iframe src={link['localizacao']}
             width="600" height="378" allowFullScreen="" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </Col>
         </Row> 

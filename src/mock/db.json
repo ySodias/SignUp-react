@@ -2,6 +2,90 @@
   "pagamento": [
     {
       "cpf": "708.607.970-74",
+      "datVencimento": "2022-03-03 09:51:23.210512",
+      "datPagamento": "2022-03-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "995.874.620-41",
+      "datVencimento": "2022-03-03 09:51:23.210512",
+      "datPagamento": "2022-03-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "992.078.940-25",
+      "datVencimento": "2022-03-03 09:51:23.210512",
+      "datPagamento": "2022-03-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "389.968.250-50",
+      "datVencimento": "2022-03-03 09:51:23.210512",
+      "datPagamento": "2022-03-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "660.998.650-98",
+      "datVencimento": "2022-03-03 09:51:23.210512",
+      "datPagamento": "2022-03-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "303.581.120-28",
+      "datVencimento": "2022-03-03 09:51:23.210512",
+      "datPagamento": "2022-03-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "708.607.970-74",
+      "datVencimento": "2022-03-03 09:51:23.210512",
+      "datPagamento": "2022-03-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "995.874.620-41",
+      "datVencimento": "2021-04-03 09:51:23.210512",
+      "datPagamento": "2021-04-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "992.078.940-25",
+      "datVencimento": "2021-04-03 09:51:23.210512",
+      "datPagamento": "2021-04-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "389.968.250-50",
+      "datVencimento": "2021-04-03 09:51:23.210512",
+      "datPagamento": "2021-04-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "660.998.650-98",
+      "datVencimento": "2021-04-03 09:51:23.210512",
+      "datPagamento": "2021-04-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "303.581.120-28",
+      "datVencimento": "2021-04-03 09:51:23.210512",
+      "datPagamento": "2021-04-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "708.607.970-74",
       "datVencimento": "2022-04-03 09:51:23.210512",
       "datPagamento": "2022-04-03 09:51:23.210512",
       "formPagamento": 1,
@@ -83,8 +167,91 @@
       "datPagamento": "2021-04-03 09:51:23.210512",
       "formPagamento": 1,
       "valorPagamento": 100.5
+    },
+    {
+      "cpf": "708.607.970-74",
+      "datVencimento": "2022-04-03 09:51:23.210512",
+      "datPagamento": "2022-04-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "995.874.620-41",
+      "datVencimento": "2022-04-03 09:51:23.210512",
+      "datPagamento": "2022-04-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "992.078.940-25",
+      "datVencimento": "2022-06-03 09:51:23.210512",
+      "datPagamento": "2022-06-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "389.968.250-50",
+      "datVencimento": "2022-06-03 09:51:23.210512",
+      "datPagamento": "2022-06-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "660.998.650-98",
+      "datVencimento": "2022-06-03 09:51:23.210512",
+      "datPagamento": "2022-06-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "303.581.120-28",
+      "datVencimento": "2022-06-03 09:51:23.210512",
+      "datPagamento": "2022-06-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "708.607.970-74",
+      "datVencimento": "2022-06-03 09:51:23.210512",
+      "datPagamento": "2022-06-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "995.874.620-41",
+      "datVencimento": "2021-07-03 09:51:23.210512",
+      "datPagamento": "2021-07-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "992.078.940-25",
+      "datVencimento": "2021-07-03 09:51:23.210512",
+      "datPagamento": "2021-07-03 09:51:23.210512",
+      "formPagamento": 2,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "389.968.250-50",
+      "datVencimento": "2021-07-03 09:51:23.210512",
+      "datPagamento": "2021-07-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "660.998.650-98",
+      "datVencimento": "2021-07-03 09:51:23.210512",
+      "datPagamento": "2021-07-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
+    },
+    {
+      "cpf": "303.581.120-28",
+      "datVencimento": "2021-07-03 09:51:23.210512",
+      "datPagamento": "2021-05-03 09:51:23.210512",
+      "formPagamento": 1,
+      "valorPagamento": 100.5
     }
-
   ],
   "dominio": [
     {
@@ -96,54 +263,66 @@
       "nome_dominio": "débito"
     }
   ],
-  "relacao_alunos":[
+  "relacao_alunos": [
     {
       "cpf": "708.607.970-74",
+      "dt_matricula": "2020-04-03 09:51:23.210512",
       "ativo": true
     },
     {
       "cpf": "995.874.620-41",
+      "dt_matricula": "2020-04-03 09:51:23.210512",
       "ativo": true
     },
     {
       "cpf": "992.078.940-25",
+      "dt_matricula": "2021-12-03 09:51:23.210512",
       "ativo": true
     },
     {
-      "cpf": "389.968.250-50"
+      "cpf": "389.968.250-50",
+      "dt_matricula": "2020-04-03 09:51:23.210512",
+      "ativo": true
     },
     {
       "cpf": "660.998.650-98",
+      "dt_matricula": "2020-03-03 09:51:23.210512",
       "ativo": false
     },
     {
       "cpf": "303.581.120-28",
+      "dt_matricula": "2020-04-03 09:51:23.210512",
       "ativo": false
     },
     {
       "cpf": "708.607.970-74",
+      "dt_matricula": "2020-05-03 09:51:23.210512",
       "ativo": true
     },
     {
       "cpf": "995.874.620-41",
+      "dt_matricula": "2020-06-03 09:51:23.210512",
       "ativo": true
     },
     {
       "cpf": "992.078.940-25",
+      "dt_matricula": "2020-04-03 09:51:23.210512",
       "ativo": false
     },
     {
       "cpf": "389.968.250-50",
+      "dt_matricula": "2021-02-03 09:51:23.210512",
       "ativo": true
     },
     {
       "cpf": "660.998.650-98",
+      "dt_matricula": "2021-06-03 09:51:23.210512",
       "ativo": true
     },
     {
       "cpf": "303.581.120-28",
+      "dt_matricula": "2021-07-03 09:51:23.210512",
       "ativo": true
     }
-    
   ]
 }
