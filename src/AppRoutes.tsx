@@ -8,3 +8,11 @@ export const Home = React.lazy(() => {
   ])
   .then(([moduleExports]) => moduleExports);
 });
+
+export const Dashboard = React.lazy(() => {
+  return Promise.all([
+    import('./pages/Dashboard'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});

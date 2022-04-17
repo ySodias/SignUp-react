@@ -13,3 +13,12 @@ body::-webkit-scrollbar {
 code {
   font-family: "Roboto";
 }
+
+.report-style-class{
+  height: 80vh;
+}
+
+.modal-dialog{
+  position: absolute;
+  top: -60vh;
+}
