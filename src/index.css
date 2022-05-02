@@ -22,3 +22,7 @@ code {
   position: absolute;
   top: -60vh;
 }
+
+a {
+  color: white !important
+}
