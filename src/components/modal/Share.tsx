@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Modal, Button } from 'react-bootstrap';
 import { useModal } from '../../hooks/useModal'
 
+
 export interface ShareProps {
   isShow: boolean;
   n: () => void;
