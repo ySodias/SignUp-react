@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { link } from '../utils/link';
 import { useModal } from '../hooks/useModal';
 import { Share } from './modal';
+
 export type BodyHomePros = {}
 
 const H2FontStyle: CSS.Properties = {

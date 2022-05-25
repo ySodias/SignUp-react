@@ -20,7 +20,7 @@ export function Header (){
         </Col>
         <Col className="p-3 d-flex justify-content-end align-items-center">
           <a className='p-2 text-decoration-none' href='/Dashboard'>Dashboards</a>
-          <a className='p-2 text-decoration-none' href='/Pagamento'>Pagamento</a>
+          <a className='p-2 text-decoration-none' href='/Pagamentos'>Pagamento</a>
           <a className='p-2 text-decoration-none' href='/Cadastro'>Cadastro</a>
           </Col>
         <Col className="d-flex p-3 justify-content-end align-items-center">
