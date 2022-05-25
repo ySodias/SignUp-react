@@ -5,6 +5,7 @@ export const useModal = () => {
   const toggle = () => setIsShow(!isShow);
   return {
     isShow,
+    setIsShow,
     toggle,
   }
 }

@@ -16,3 +16,11 @@ export const Dashboard = React.lazy(() => {
   ])
   .then(([moduleExports]) => moduleExports);
 });
+
+export const Pagamentos = React.lazy(() => {
+  return Promise.all([
+    import('./pages/Pagamentos'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});

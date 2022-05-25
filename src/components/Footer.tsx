@@ -27,7 +27,7 @@ export function Footer (){
   return(
     <>
       <div style={HeigthRowStyle}>
-          <Row clasName="m-0">
+          <Row className="m-0">
         <Col className="align-items-center d-flex justify-content-end" > 
           <img src="src\assets\img\logo.svg" alt="" height="150px" width="150px" />
         </Col>
@@ -36,7 +36,7 @@ export function Footer (){
           <dt><a className='text-decoration-none'>Sobre</a></dt>
           <dd><a className='text-decoration-none' href=''>Política de Privacidade</a></dd>
           </dl>
-          <dl className='text-decoration-none' className='p-3'>
+          <dl className='text-decoration-none p-3'>
           <dt><a className='text-decoration-none'>Serviços</a></dt>
           <dd><a className='text-decoration-none' href=''>Cadastrar Novo Aluno</a></dd>
           <dd><a className='text-decoration-none' href=''>Atualizar Cadastro</a></dd>
