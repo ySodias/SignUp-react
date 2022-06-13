@@ -24,3 +24,11 @@ export const Pagamentos = React.lazy(() => {
   ])
   .then(([moduleExports]) => moduleExports);
 });
+
+export const Cadastro = React.lazy(() => {
+  return Promise.all([
+    import('./pages/Cadastro'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Container, Col, Button } from 'react-bootstrap'
+import { Row, Container, Col, Button, ToggleButtonGroup } from 'react-bootstrap'
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import CSS from 'csstype';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -36,8 +36,9 @@ const message = `https://api.whatsapp.com/send?phone=+551998769-3143&text=${link
 console.log(message)
 
 export const BodyHome: React.FC<BodyHomePros> = () => {
-  const { isShow, toggle } = useModal();
-  
+  const { isShow, setIsShow,toggle } = useModal();
+ 
+
   return(
     <div>
       <Row >
@@ -71,7 +72,7 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
               <FontAwesomeIcon  icon={faShareAlt} />
               </div><span className='px-1'>Compartilhar</span>  
             </Button>
-            <Share isShow={isShow} hide={toggle}/>
+            <Share show={isShow}/>
             </div>
           <iframe src={link['localizacao']}
             width="600" height="378" allowFullScreen="" referrerPolicy="no-referrer-when-downgrade"></iframe>

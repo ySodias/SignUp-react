@@ -1,21 +1,25 @@
-import * as React from 'react';
+import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, Button} from 'react-bootstrap';
 import { useModal } from '../../hooks/useModal'
 
-
 export interface ShareProps {
-  isShow: boolean;
-  n: () => void;
+  show: boolean;
 }
-export const Share: React.FC<ShareProps> = ({ isShow, hide }) => {
-  async function onClose (){
-    isShow=false
-    return isShow
+export const Share: React.FC<ShareProps> = ({ show }) => {
+
+  const { isShow, setIsShow } = useModal();
+
+  const modalRef = useRef()
+
+  const close = (e: any) => {
+    if (modalRef.current === e.target){
+      setIsShow(false);
+    }
   }
-  
 
   const modal = (
+    <div ref={modalRef}>
     <Modal.Dialog>
       <Modal.Header closeButton>
         <Modal.Title>Modal title</Modal.Title>
@@ -26,11 +30,12 @@ export const Share: React.FC<ShareProps> = ({ isShow, hide }) => {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose} >Close</Button>
+        <Button variant="secondary" onClick={close}>Close</Button>
         <input type='text'></input>
         <Button variant="primary">Save changes</Button>
       </Modal.Footer>
     </Modal.Dialog>
+    </div>
   )
-  return isShow ? ReactDOM.createPortal(modal, document.body) : null;
+  return show ? ReactDOM.createPortal(modal, document.body) : null;
 }
