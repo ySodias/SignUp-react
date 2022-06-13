@@ -324,5 +324,79 @@
       "dt_matricula": "2021-07-03 09:51:23.210512",
       "ativo": true
     }
+  ],
+  "relacao_aluno_pagamento": [
+    {
+      "nome": "Beatriz",
+      "estado_matricula": true,
+      "dt_matricula": "2020-04-03 09:51:23.210512",
+      "vencimento_mensalidade": "09"
+    },
+    {
+      "nome": "Yuri",
+      "estado_matricula": true,
+      "dt_matricula": "2020-04-05 09:51:23.210512",
+      "vencimento_mensalidade": "09"
+    },
+    {
+      "nome": "Monica",
+      "estado_matricula": true,
+      "dt_matricula": "2020-07-03 09:51:23.210512",
+      "vencimento_mensalidade": "09"
+    },
+    {
+      "nome": "Bruno",
+      "estado_matricula": false,
+      "dt_matricula": "2020-04-03 09:51:23.210512",
+      "encerrado_em": "2020-08-03 09:51:23.210512"
+    },
+    {
+      "nome": "Beatriz",
+      "estado_matricula": false,
+      "dt_matricula": "2020-04-03 09:51:23.210512",
+      "encerrado_em": "2020-08-20 09:51:23.210512"
+    },
+    {
+      "nome": "Matheus",
+      "estado_matricula": true,
+      "dt_matricula": "2021-04-03 09:51:23.210512",
+      "vencimento_mensalidade": "09"
+    },
+    {
+      "nome": "João",
+      "estado_matricula": true,
+      "dt_matricula": "2020-012-03 09:51:23.210512",
+      "vencimento_mensalidade": "20"
+    },
+    {
+      "nome": "Diogo",
+      "estado_matricula": true,
+      "dt_matricula": "2019-04-03 09:51:23.210512",
+      "vencimento_mensalidade": "30"
+    },
+    {
+      "nome": "Beatriz",
+      "estado_matricula": true,
+      "dt_matricula": "2020-04-03 09:51:23.210512",
+      "vencimento_mensalidade": "09"
+    },
+    {
+      "nome": "Ricardo",
+      "estado_matricula": true,
+      "dt_matricula": "2022-04-03 09:51:23.210512",
+      "vencimento_mensalidade": "09"
+    },
+    {
+      "nome": "Max",
+      "estado_matricula": false,
+      "dt_matricula": "2022-04-03 09:51:23.210512",
+      "encerrado_em": "2022-05-20 09:51:23.210512"
+    },
+    {
+      "nome": "Beatriz",
+      "estado_matricula": true,
+      "dt_matricula": "2020-04-03 09:51:23.210512",
+      "vencimento_mensalidade": "09"
+    }
   ]
 }

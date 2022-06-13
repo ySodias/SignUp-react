@@ -26,3 +26,14 @@ code {
 a {
   color: white !important
 }
+
+.table-inativos{
+  display: none;
+}
+button.p-3.exalunos{
+  border: none
+}
+
+.obrigatorio{
+  color: red;
+}
