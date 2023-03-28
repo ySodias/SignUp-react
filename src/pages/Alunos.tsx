@@ -1,10 +1,12 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { useModal } from '../hooks/useModal';
 import { TableUsersAtivos } from '../components/TableUsersAtivos';
 import { TableUsersInativos } from '../components/TableUsersInativos';
 
 import CSS from 'csstype';
+import { cookies } from '../providers';
+import { useNavigate } from 'react-router-dom';
 
 export interface IPagamentosProps {}
 
@@ -12,11 +14,20 @@ const H2FontStyle: CSS.Properties = {
   borderBottom: 'none'
 }
 
-const Pagamentos: React.FC<IPagamentosProps > = (props) => {
+const Alunos: React.FC<IPagamentosProps > = (props) => {
+
+  const navigate = useNavigate();
+  
+  useEffect(()=> {
+    const isLogin = cookies.get('token')
+    if (isLogin === null || isLogin === undefined) {
+      navigate('/Login')
+    }
+  }, [])
 
   const { isShow, setIsShow } = useModal();
 
-  async function buttonState() {
+  function buttonState() {
     let tableAtivos = document.getElementsByClassName('table-ativos')
     let tableInativos = document.getElementsByClassName('table-inativos')
     let alunos = document.getElementsByClassName('ativos');
@@ -51,4 +62,4 @@ const Pagamentos: React.FC<IPagamentosProps > = (props) => {
   )
 }
 
-export default Pagamentos
+export default Alunos

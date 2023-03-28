@@ -17,9 +17,9 @@ export const Dashboard = React.lazy(() => {
   .then(([moduleExports]) => moduleExports);
 });
 
-export const Pagamentos = React.lazy(() => {
+export const Alunos = React.lazy(() => {
   return Promise.all([
-    import('./pages/Pagamentos'),
+    import('./pages/Alunos'),
     new Promise(resolve => setTimeout(resolve, 500))
   ])
   .then(([moduleExports]) => moduleExports);
@@ -28,6 +28,22 @@ export const Pagamentos = React.lazy(() => {
 export const Cadastro = React.lazy(() => {
   return Promise.all([
     import('./pages/Cadastro'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});
+
+export const Login = React.lazy(() => {
+  return Promise.all([
+    import('./pages/Login'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});
+
+export const Treino = React.lazy(() => {
+  return Promise.all([
+    import('./pages/Treino'),
     new Promise(resolve => setTimeout(resolve, 500))
   ])
   .then(([moduleExports]) => moduleExports);

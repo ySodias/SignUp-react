@@ -1,13 +1,22 @@
 import { PowerBIEmbed } from 'powerbi-client-react';
 import React, { useEffect } from 'react';
 import { models } from 'powerbi-client';
-import { useDashboard } from '../hooks/useDashboard';
+import { useNavigate } from 'react-router-dom';
+import { cookies } from '../providers';
 
 export interface IDashboardProps {}
 
 let report: any = ''
 
 const Dashboard: React.FC<IDashboardProps > = (props) => {
+  const navigate = useNavigate();
+  
+  useEffect(()=> {
+    const isLogin = cookies.get('token')
+    if (isLogin === null || isLogin === undefined) {
+      navigate('/Login')
+    }
+  }, [])
 
   return (
     <>

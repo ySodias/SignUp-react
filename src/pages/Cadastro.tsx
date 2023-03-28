@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 import { FormCadastro } from '../components/FormCadastro';
+import { cookies } from '../providers';
 
 export interface ICadastroProps {}
 
 const Cadastro: React.FC<ICadastroProps > = () => {
-
+  const navigate = useNavigate();
+  
+  useEffect(()=> {
+    const isLogin = cookies.get('token')
+    if (isLogin === null || isLogin === undefined) {
+      navigate('/Login')
+    }
+  }, [])
+  
   return (
     <>
     <Container>

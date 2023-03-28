@@ -1,8 +1,9 @@
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
+import { cookies } from '../providers';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -22,8 +23,6 @@ export const FormCadastro = () => {
   const [password, setPassword] = useState('');
   const [email_adress, setEmail] = useState('');
   const [photo, setPhoto] = useState('')
-
-  const navigate = useNavigate();
 
   const handleSubmit = () => {
     event?.preventDefault()
