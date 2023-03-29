@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Loader from 'react-ts-loaders/dist';
-import { Dashboard, Home, Alunos, Cadastro, Login, Treino } from './AppRoutes';
+import { Dashboard, Home, Alunos, Cadastro, Login, Treino, CriarTreino } from './AppRoutes';
 import { Footer } from './components';
 
 export interface IApplicationProps {}
@@ -22,6 +22,7 @@ const App: React.FC<IApplicationProps> = (props) => {
             <Route path = '/cadastro' element={<Cadastro />} />
             <Route path = '/login' element={<Login />} />
             <Route path = '/treino' element={<Treino />} />
+            <Route path = '/criartreino' element={<CriarTreino />} />
           </Routes>
          </BrowserRouter>
          <Footer />

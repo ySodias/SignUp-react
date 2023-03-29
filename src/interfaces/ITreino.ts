@@ -15,5 +15,5 @@ export interface ITreino {
 }
 
 export interface TreinoParams {
-    id: Number | null;
+    id: Number
 }

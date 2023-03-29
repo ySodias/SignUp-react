@@ -48,3 +48,11 @@ export const Treino = React.lazy(() => {
   ])
   .then(([moduleExports]) => moduleExports);
 });
+
+export const CriarTreino = React.lazy(() => {
+  return Promise.all([
+    import('./pages/CriarTreino'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});

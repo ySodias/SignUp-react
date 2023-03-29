@@ -57,7 +57,6 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
   function onSelectionChanged() {
     const selectedRows = gridOptions.api.getSelectedRows();
-    console.log(selectedRows)
     navigate('/Treino', {state: {id: selectedRows[0].id}})
   }
 

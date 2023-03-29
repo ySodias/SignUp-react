@@ -6,13 +6,15 @@ export const useTreino = () => {
 
   const [treino, setTreino] = useState<ITreino[]>();
 
-  const getTreino = useCallback(async(params: TreinoParams) => {
-
-    const { status, data } = await TreinoService.getTreino(params);
+  const getTreino = useCallback(async(id: number) => {
+    console.log(id)
+    const { status, data } = await TreinoService.getTreino(id);
     if (status != 200) throw new Error();
     setTreino(data);
     return data
   }, []);
+
+  
 
   return {
     treino,

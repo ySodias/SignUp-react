@@ -1,0 +1,80 @@
+import React, { useEffect, useState } from 'react';
+import { AgGridReact } from '@ag-grid-community/react';
+import {AllCommunityModules} from "@ag-grid-community/all-modules"
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+
+import CSS from 'csstype';
+import { useTreino } from '../hooks/useTreino';
+import { useNavigate } from 'react-router-dom';
+
+export type ITTableTreinoPros = {
+    idUsuario: Number;
+}
+
+const SizeTable: CSS.Properties = {
+  height: '50vh',
+  width: '60vw',
+}
+
+export const TableTreino: React.FC<ITTableTreinoPros> = ({
+  idUsuario
+}) => {
+
+  const InitialRowData = [
+    {
+    nome_exercicio: "teste", 
+    tipo_exercicio: "teste", 
+    repeticoes: 1,
+    carga: 1,
+    frequencia: 1
+    },];
+
+    const [rowData, setRowData] = useState(InitialRowData);
+    const navigate = useNavigate()
+    const { getTreino } = useTreino();
+
+
+    async function getData() {
+      const response = await getTreino(idUsuario);
+      return response;
+    }
+  
+    useEffect(() => {
+      getData()
+      .then((resp) => [resp].map(res => res))
+      .then((rowData) => {
+        setRowData(rowData)
+      })
+    },[])
+
+      
+  const gridOptions = {
+    columnDefs :[
+      { headerName: "Exercícios", field: "nome_exercicio", width: 150, minWidth: 90},
+      { headerName: "Tipo de Treino",field: "tipo_exercicio", width: 150, minWidth: 90 },
+      { headerName: "Repetições", field: "repeticoes", width: 150, minWidth: 90 },
+      { headerName: "Carga",field: "carga", width: 150, minWidth: 90 },
+      { headerName: "Frequência",field: "frequencia", width: 200, minWidth: 170 }
+    ], 
+      onSelectionChanged: onSelectionChanged,
+      rowSelection: 'single',
+  }
+
+  function onSelectionChanged() {
+    const selectedRows = gridOptions.api.getSelectedRows();
+    navigate('/Treino', {state: {id: selectedRows[0].id}})
+  }
+
+  return (
+    <div className="ag-theme-alpine table-inativos" style={SizeTable}>
+      <AgGridReact
+          gridOptions={gridOptions}
+          rowData={rowData}
+          modules={AllCommunityModules}
+          defaultColDef={{ flex: 1 }}
+          undoRedoCellEditing={true}>
+      </AgGridReact>
+  </div>
+)
+}
