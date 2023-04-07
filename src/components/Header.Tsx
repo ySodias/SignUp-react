@@ -1,10 +1,5 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import CSS from 'csstype';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import { cookies } from '../providers';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ButtonLogin from './ButtonLogin';
 
 const HeigthRowStyle: CSS.Properties = {

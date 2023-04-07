@@ -6,6 +6,9 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import CSS from 'csstype';
 import { useNavigate } from 'react-router-dom';
+import ButtonPagar from './ButtonPagar';
+import ButtonEditar from './buttons/ButtonEditar';
+import ButtonEncerrar from './ButtonEncerrar';
 
 export interface ITablePagamentosPros {}
 

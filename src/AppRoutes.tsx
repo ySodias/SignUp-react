@@ -56,3 +56,11 @@ export const CriarTreino = React.lazy(() => {
   ])
   .then(([moduleExports]) => moduleExports);
 });
+
+export const EditarCadastro = React.lazy(() => {
+  return Promise.all([
+    import('./pages/EditarCadastro'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});

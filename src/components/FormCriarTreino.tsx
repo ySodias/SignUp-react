@@ -25,7 +25,7 @@ export type IFormCriarTreinoPros = {
 }
 
 export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
-    idCliente, nomeCliente    
+    idCliente    
 ) => {
 
     const navigate = useNavigate();

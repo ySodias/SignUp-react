@@ -1,5 +1,5 @@
 
-import { faArrowRightFromBracket, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faArrowRightToBracket, faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
 import { cookies } from '../providers';
@@ -15,7 +15,10 @@ const ButtonLogin = () => {
     return (
         <>
          {isLoggedIn ? (
+            <>
+            <a className="px-3 text-decoration-none" href=''> <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></a>
             <a className="px-3 text-decoration-none" href='/' onClick={handleLogout}><FontAwesomeIcon  icon={faArrowRightFromBracket}></FontAwesomeIcon></a>
+            </>
         ) : (
             <a className="px-3 text-decoration-none" href='/Login'><FontAwesomeIcon  icon={faArrowRightToBracket}></FontAwesomeIcon></a>
         )}
