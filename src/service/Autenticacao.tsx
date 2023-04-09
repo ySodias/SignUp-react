@@ -1,7 +1,7 @@
-import { Api } from '../providers'
+import { Auth } from '../providers'
 
 
-const postLogin = (body: any) => Api
+const postLogin = (body: any) => Auth
   .post("autenticacao", JSON.stringify(body))
 
 export const AutenticacaoService = {

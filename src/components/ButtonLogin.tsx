@@ -16,7 +16,7 @@ const ButtonLogin = () => {
         <>
          {isLoggedIn ? (
             <>
-            <a className="px-3 text-decoration-none" href=''> <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></a>
+            <a className="px-3 text-decoration-none" href='/Administrador'> <FontAwesomeIcon icon={faGear}></FontAwesomeIcon></a>
             <a className="px-3 text-decoration-none" href='/' onClick={handleLogout}><FontAwesomeIcon  icon={faArrowRightFromBracket}></FontAwesomeIcon></a>
             </>
         ) : (

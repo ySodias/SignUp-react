@@ -64,3 +64,11 @@ export const EditarCadastro = React.lazy(() => {
   ])
   .then(([moduleExports]) => moduleExports);
 });
+
+export const Administrador = React.lazy(() => {
+  return Promise.all([
+    import('./pages/Administrador'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});

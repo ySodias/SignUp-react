@@ -9,6 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import ButtonPagar from './ButtonPagar';
 import ButtonEditar from './buttons/ButtonEditar';
 import ButtonEncerrar from './ButtonEncerrar';
+import { Button } from 'react-bootstrap';
+import { useUsuario } from '../hooks/useUsuario';
+import { PagamentosService } from '../service/Pagamentos';
 
 export interface ITablePagamentosPros {}
 
@@ -17,36 +20,31 @@ const SizeTable: CSS.Properties = {
   width: '60vw',
 }
 
+const SizeButtonStyle: CSS.Properties = {
+  height: '3.5vh',
+  width: '3.5vw',
+  padding: '0px'
+}
 
 
 export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
-  const gridOptions = {
-    columnDefs :[
-      { headerName: "Nome", field: "nome", width: 150, minWidth: 90},
-      { headerName: "Estado da Matrícula",field: "estado_matricula", width: 150, minWidth: 90 },
-      { headerName: "Cadastrado em", field: "cadastrado_em", width: 150, minWidth: 90 },
-      { headerName: "Status Mensalidade",field: "status_matricula", width: 150, minWidth: 90 },
-      { headerName: "Ultima Mensalidade Paga",field: "ultima_mensalidade_paga", width: 200, minWidth: 170 },
-      { headerName: "Vencimento da Mensalidade",field: "vencimento_mensalidade", width: 200, minWidth: 170 }
-    ], 
-      onSelectionChanged: onSelectionChanged,
-      rowSelection: 'single',
-  }
+
+  const navigate = useNavigate()
+  const { getPagamentos, getPagamentosUsuario, putPagamentosUsuario } = usePagamentos();
+  const { getUsuario } = useUsuario();
 
   const InitialRowData = [
     {nome: "Toyota", 
     dt_matricula: "2020-04-03 09:51:23.21051", 
     vencimento_mensalidade: "9"},
   ];
-  const navigate = useNavigate()
-  const { getPagamentos } = usePagamentos();
 
   const [rowData, setRowData] = useState(InitialRowData);
 
   async function getData() {
-    const response = await getPagamentos(true);
-    return response;
+    const response = await getPagamentos(true)
+    return response
   }
 
   useEffect(() => {
@@ -58,9 +56,71 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
     })
   },[])
 
+
+  const handleButtonEditar = () => {
+    console.log(gridOptions.api.getSelectedRows())
+  }
+
+  async function handleButtonPagar() {
+    const id = gridOptions.api.getSelectedRows()[0]?.id;
+    await getUsuario({id: id}).then(async (res) => {
+       await getPagamentosUsuario(res[0].cpf).then(async(resp)=>{
+        if (resp){
+          let antiga_data_ventcimento = new Date(resp.data_vencimento)
+          let nova_data_vencimento = new Date()
+          nova_data_vencimento.setMonth(antiga_data_ventcimento.getMonth() + 1)
+          const body = {
+            id: Number(resp.id),
+            cpf_usuario: res[0].cpf,
+            data_vencimento: nova_data_vencimento.toISOString().split('T')[0],
+            forma_pagamento: Number(resp.forma_pagamento),
+            valor_pagamento: Number(resp.valor_pagamento)
+          }
+          await putPagamentosUsuario(body).then(async(r) => {
+          console.log(r === 'update with sucess')
+          if (r === 'update with sucess'){
+            window.location.reload(); 
+        }})
+        }
+      })
+      })
+    };
+  
+
+  const buttonPagar = () => {
+    return (
+      <Button variant='success' style={SizeButtonStyle} onClick={handleButtonPagar}>Pagar</Button>
+    )
+  }
+  const buttonEditar = () => {
+    return (
+      <Button variant='warning' style={SizeButtonStyle} onClick={handleButtonEditar}>Editar</Button>
+    )
+  }
+
+
+  const gridOptions = {
+    columnDefs :[
+      { headerName: "Nome", field: "nome", width: 150, minWidth: 90},
+      { headerName: "Estado da Matrícula",field: "estado_matricula", width: 150, minWidth: 90 },
+      { headerName: "Cadastrado em", field: "cadastrado_em", width: 150, minWidth: 90 },
+      { headerName: "Status Mensalidade",field: "status_matricula", width: 150, minWidth: 90 },
+      { headerName: "Ultima Mensalidade Paga",field: "ultima_mensalidade_paga", width: 200, minWidth: 170 },
+      { headerName: "Vencimento da Mensalidade",field: "vencimento_mensalidade", width: 200, minWidth: 170 },
+      {  field: '',
+        cellRenderer: buttonPagar, width: 150, minWidth: 90
+      },
+      {  field: '',
+      cellRenderer: buttonEditar, width: 150, minWidth: 90
+    }
+    ], 
+      onSelectionChanged: onSelectionChanged,
+      rowSelection: 'single',
+  }
+
   function onSelectionChanged() {
     const selectedRows = gridOptions.api.getSelectedRows();
-    navigate('/Treino', {state: {id: selectedRows[0].id}})
+    //navigate('/Treino', {state: {id: selectedRows[0].id}})
   }
 
 

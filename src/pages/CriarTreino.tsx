@@ -16,7 +16,6 @@ const CriarTreino: React.FC<ICadastroProps > = (
   const { nomeCliente, idCliente } = state;
 
   useEffect(()=> {
-    console.log(nomeCliente)
     const isLogin = cookies.get('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
