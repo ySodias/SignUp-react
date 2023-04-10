@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { usePagamentos } from '../hooks/usePagamentos';
+import { usePagamentos } from '../../hooks/usePagamentos';
 import { AgGridReact } from '@ag-grid-community/react';
 import {AllCommunityModules} from "@ag-grid-community/all-modules"
 import 'ag-grid-community/dist/styles/ag-grid.css';

@@ -2,10 +2,10 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Button } from 'react-bootstrap'
-import { AutenticacaoService } from "../service/Autenticacao"
+import { AutenticacaoService } from "../../service/Autenticacao"
 import { AxiosError} from 'axios'
 import CSS from 'csstype';
-import { cookies } from '../providers';
+import { cookies } from '../../providers';
 
 
 const ButtonMatricularStyle: CSS.Properties = {

@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
-import { cookies } from '../providers';
-import { useUsuario } from '../hooks/useUsuario';
-import { TreinoService } from '../service/Treino';
+import { cookies } from '../../providers';
+import { useUsuario } from '../../hooks/useUsuario';
+import { TreinoService } from '../../service/Treino';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',

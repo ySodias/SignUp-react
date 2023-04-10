@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
-import { FormLogin } from '../components/FormLogin';
+import { FormLogin } from '../components/forms/FormLogin';
 
 export interface ILoginProps {}
 

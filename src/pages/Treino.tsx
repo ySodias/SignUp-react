@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cookies } from '../providers';
-import { TableTreino } from '../components/TableTreino';
+import { TableTreino } from '../components/tables/TableTreino';
 import CSS from 'csstype';
 import { useTreino } from '../hooks/useTreino';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';

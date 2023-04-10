@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FormCriarTreino } from '../components/FormCriarTreino';
+import { FormCriarTreino } from '../components/forms/FormCriarTreino';
 import { cookies } from '../providers';
 
 export type ICadastroProps = {

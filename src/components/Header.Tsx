@@ -1,6 +1,6 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import CSS from 'csstype';
-import ButtonLogin from './ButtonLogin';
+import ButtonLogin from './buttons/ButtonLogin';
 
 const HeigthRowStyle: CSS.Properties = {
   height: '10vh',

@@ -1,8 +1,8 @@
 import React, { useRef, useCallback, useEffect } from 'react';
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { useModal } from '../hooks/useModal';
-import { TableUsersAtivos } from '../components/TableUsersAtivos';
-import { TableUsersInativos } from '../components/TableUsersInativos';
+import { TableUsersAtivos } from '../components/tables/TableUsersAtivos';
+import { TableUsersInativos } from '../components/tables/TableUsersInativos';
 
 import CSS from 'csstype';
 import { cookies } from '../providers';

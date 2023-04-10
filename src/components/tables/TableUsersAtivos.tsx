@@ -1,17 +1,16 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
-import { usePagamentos } from '../hooks/usePagamentos';
+import { usePagamentos } from '../../hooks/usePagamentos';
 import { AgGridReact } from '@ag-grid-community/react';
 import {AllCommunityModules} from "@ag-grid-community/all-modules"
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import CSS from 'csstype';
 import { useNavigate } from 'react-router-dom';
-import ButtonPagar from './ButtonPagar';
-import ButtonEditar from './buttons/ButtonEditar';
-import ButtonEncerrar from './ButtonEncerrar';
-import { Button } from 'react-bootstrap';
-import { useUsuario } from '../hooks/useUsuario';
-import { PagamentosService } from '../service/Pagamentos';
+import { Alert, Button } from 'react-bootstrap';
+import { useUsuario } from '../../hooks/useUsuario';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { UsuarioService } from '../../service/Usuario';
 
 export interface ITablePagamentosPros {}
 
@@ -26,6 +25,11 @@ const SizeButtonStyle: CSS.Properties = {
   padding: '0px'
 }
 
+const SizeButtonEncerrarStyle: CSS.Properties = {
+  height: '3.5vh',
+  width: '5vw',
+  padding: '0px'
+}
 
 export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
@@ -33,6 +37,7 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
   const navigate = useNavigate()
   const { getPagamentos, getPagamentosUsuario, putPagamentosUsuario } = usePagamentos();
   const { getUsuario } = useUsuario();
+  let setAlert = false;
 
   const InitialRowData = [
     {nome: "Toyota", 
@@ -58,7 +63,10 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
 
   const handleButtonEditar = () => {
-    console.log(gridOptions.api.getSelectedRows())
+    console.log(gridOptions.api.getSelectedRows()[0]?.id)
+    navigate('/EditarCadastro', {state: {
+      id: Number(gridOptions.api.getSelectedRows()[0]?.id)
+    }})
   }
 
   async function handleButtonPagar() {
@@ -79,13 +87,62 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
           await putPagamentosUsuario(body).then(async(r) => {
           console.log(r === 'update with sucess')
           if (r === 'update with sucess'){
-            window.location.reload(); 
+            toast.success('Pagamento realizado com Sucesso', {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
+            setTimeout(() => 
+            {
+                window.location.reload(); 
+            },
+            2500);
+
         }})
         }
       })
       })
     };
   
+  async function handleButtonencerrar() {
+    const id = gridOptions.api.getSelectedRows()[0]?.id;
+    await getUsuario({id: id}).then(async (res) => {
+      const body = {
+        id: id,
+        cpf: res[0].cpf,
+        nome_cliente: res[0].nome_cliente,
+        data_nascimento: res[0].data_nascimento,
+        endereco: res[0].endereco,
+        forma_pagamento: res[0].forma_pagamento,
+        telefone: res[0].telefone,
+        ativo: false,
+        plano: res[0].plano
+      }
+      const response = await UsuarioService.putUsuario(body)
+      if (response.status === 200) {
+        toast.success('Matricula encerrada com Sucesso', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
+          setTimeout(() => 
+          {
+              window.location.reload(); 
+          },
+          2500);
+      }
+    })
+  }
 
   const buttonPagar = () => {
     return (
@@ -95,6 +152,12 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
   const buttonEditar = () => {
     return (
       <Button variant='warning' style={SizeButtonStyle} onClick={handleButtonEditar}>Editar</Button>
+    )
+  }
+
+  const buttonEncerrar = () => {
+    return (
+      <Button variant='danger' style={SizeButtonEncerrarStyle} onClick={handleButtonencerrar}>Encerrar</Button>
     )
   }
 
@@ -112,7 +175,10 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
       },
       {  field: '',
       cellRenderer: buttonEditar, width: 150, minWidth: 90
-    }
+      },
+      {  field: '',
+      cellRenderer: buttonEncerrar, width: 150, minWidth: 150
+      }
     ], 
       onSelectionChanged: onSelectionChanged,
       rowSelection: 'single',
@@ -132,6 +198,7 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
           rowData={rowData}
           gridOptions={gridOptions}>
       </AgGridReact>
+      <ToastContainer />
   </div>
 )
 }
