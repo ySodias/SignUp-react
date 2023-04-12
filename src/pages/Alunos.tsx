@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { useModal } from '../hooks/useModal';
 import { TableUsersAtivos } from '../components/tables/TableUsersAtivos';
@@ -25,7 +25,7 @@ const Alunos: React.FC<IPagamentosProps > = (props) => {
     }
   }, [])
 
-  const { isShow, setIsShow } = useModal();
+  const { isShow, setIsShow } = useModal(true);
 
   function buttonState() {
     let tableAtivos = document.getElementsByClassName('table-ativos')

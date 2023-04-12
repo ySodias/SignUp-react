@@ -1,18 +1,17 @@
-import React, { useRef, useCallback, useEffect } from 'react';
-import { Row, Container, Col, Button, Nav } from 'react-bootstrap'
+import React, { useEffect } from 'react';
+import { Row, Container, Col } from 'react-bootstrap'
 import { useModal } from '../hooks/useModal';
-import { TableUsersAtivos } from '../components/tables/TableUsersAtivos';
-import { TableUsersInativos } from '../components/tables/TableUsersInativos';
 
 import CSS from 'csstype';
 import { cookies } from '../providers';
 import { useNavigate } from 'react-router-dom';
 import { Menu, MenuItem, ProSidebarProvider, Sidebar, SubMenu } from 'react-pro-sidebar';
+import { FormCadastroAdministrador } from '../components/forms/FormCadastroAdministrador';
 
 export interface IPagamentosProps {}
 
 const rowStyle: CSS.Properties = {
-  height: '25vh'
+  height: '40.35vh'
 }
 
 const Administraodr: React.FC<IPagamentosProps > = (props) => {
@@ -26,29 +25,35 @@ const Administraodr: React.FC<IPagamentosProps > = (props) => {
     }
   }, [])
 
+  const { isShow, setIsShow } = useModal(false);
 
+  const buttonForm = () => {
+    setIsShow(!isShow);
+  }
 
   return (
     <>
     <Container>
+    <div className='d-flex justify-content-center p-5'>
+        <h1>Administrador</h1>
+      </div>
       <Row className="p-5">
-        <Col>
+        <Col sm={2}>
         <ProSidebarProvider>
         <Sidebar backgroundColor="#FB6DBA">
             <Menu>
-                <SubMenu label="Funcionário">
-                <MenuItem> Criar Funcionário </MenuItem>
-                <MenuItem> Editar Funcionário </MenuItem>
-                </SubMenu>
-                <MenuItem> Documentation </MenuItem>
-                <MenuItem> Calendar </MenuItem>
+                <MenuItem onClick={buttonForm}> Cadastrar Funcionário </MenuItem>
+                <MenuItem> Contatar Suporte </MenuItem>
             </Menu>
             </Sidebar>
             </ProSidebarProvider>
         </Col>
+        <Col></Col>
+        <Col sm={8}>
+        {isShow == true ? <FormCadastroAdministrador /> : <></>}
+        </Col>
       </Row>
-      <Row style={rowStyle}>
-      </Row>
+      {isShow == false ?  <Row style={rowStyle}></Row>: <></>}
     </Container>
     </>
   )

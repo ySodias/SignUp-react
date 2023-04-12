@@ -20,16 +20,10 @@ const FontStyle: CSS.Properties = {
   color: '#000000',
 }
 
-const FontStyleData: CSS.Properties = {
-  fontStyle: 'bold',
-  fontSize: '18px',
-  color: 'rgba(0, 0, 0, 0.5)'
+const rowStyle: CSS.Properties = {
+  height: '80vh'
 }
 
-const BoxStyle: CSS.Properties = {
-  height: '100px',
-  width: '100%'
-}
 
 const Treino: React.FC<ITreinoProps> = ({
 }) => {
@@ -107,6 +101,7 @@ const Treino: React.FC<ITreinoProps> = ({
 
   return (
       <>
+      {rowData === undefined ? <Row style={rowStyle}></Row> : <></>}
       <Container>
           {handlerGrid()}
       </Container>

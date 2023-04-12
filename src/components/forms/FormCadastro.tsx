@@ -4,19 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
 import { cookies } from '../../providers';
-import { UsuariooService } from '../../service/Usuario';
+import { UsuarioService } from '../../service/Usuario';
 import { PagamentosService } from '../../service/Pagamentos';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
-  backgroundColor: 'rgba(254, 61,61,0.67)',
-  borderColor: '#FE3D3D'
+  backgroundColor: 'rgba(134, 220,121,0.67)',
+  borderColor: '#5CE750'
 }
 
 const ButtonCancelarStyle: CSS.Properties = {
   color: '#FAFAFA',
-  backgroundColor: 'rgba(134, 220,121,0.67)',
-  borderColor: '#5CE750'
+  backgroundColor: 'rgba(254, 61,61,0.67)',
+  borderColor: '#FE3D3D'
 }
 
 export const FormCadastro = () => {
@@ -49,7 +49,7 @@ export const FormCadastro = () => {
       ativo: ativo,
       plano: Number(plano)
     }
-    const response = await UsuariooService.postUsuario(body)
+    const response = await UsuarioService.postUsuario(body)
     if (response.status === 201) {
       const valorPagamento = defineValorPagamento()
       const bodyPagamento = {

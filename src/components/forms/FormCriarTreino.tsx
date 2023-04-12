@@ -9,14 +9,15 @@ import { TreinoService } from '../../service/Treino';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
-  backgroundColor: 'rgba(254, 61,61,0.67)',
-  borderColor: '#FE3D3D'
+  backgroundColor: 'rgba(134, 220,121,0.67)',
+  borderColor: '#5CE750'
 }
 
 const ButtonCancelarStyle: CSS.Properties = {
   color: '#FAFAFA',
-  backgroundColor: 'rgba(134, 220,121,0.67)',
-  borderColor: '#5CE750'
+
+  backgroundColor: 'rgba(254, 61,61,0.67)',
+  borderColor: '#FE3D3D'
 }
 
 export type IFormCriarTreinoPros = {

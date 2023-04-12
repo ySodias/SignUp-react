@@ -4,6 +4,12 @@ import { models } from 'powerbi-client';
 import { useNavigate } from 'react-router-dom';
 import { cookies } from '../providers';
 import { useDashboards } from '../hooks/useDashboards';
+import { Row } from 'react-bootstrap';
+import CSS from 'csstype';
+
+const rowStyle: CSS.Properties = {
+  height: '80vh'
+}
 
 export interface IDashboardProps {}
 
@@ -74,6 +80,7 @@ const Dashboard: React.FC<IDashboardProps > = (props) => {
 }
 return (
     <>
+            {token === undefined ? <Row style={rowStyle}></Row> : <></>}
             {handlerForm()}
     </>
 )

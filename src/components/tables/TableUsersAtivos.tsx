@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { usePagamentos } from '../../hooks/usePagamentos';
 import { AgGridReact } from '@ag-grid-community/react';
-import {AllCommunityModules} from "@ag-grid-community/all-modules"
+import {AllCommunityModules, CellClickedEvent} from "@ag-grid-community/all-modules"
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import CSS from 'csstype';
@@ -10,7 +10,6 @@ import { Alert, Button } from 'react-bootstrap';
 import { useUsuario } from '../../hooks/useUsuario';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UsuarioService } from '../../service/Usuario';
 
 export interface ITablePagamentosPros {}
 
@@ -36,8 +35,7 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
   const navigate = useNavigate()
   const { getPagamentos, getPagamentosUsuario, putPagamentosUsuario } = usePagamentos();
-  const { getUsuario } = useUsuario();
-  let setAlert = false;
+  const { getUsuario, putUsuario } = useUsuario();
 
   const InitialRowData = [
     {nome: "Toyota", 
@@ -113,7 +111,7 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
     const id = gridOptions.api.getSelectedRows()[0]?.id;
     await getUsuario({id: id}).then(async (res) => {
       const body = {
-        id: id,
+        id: res[0].id,
         cpf: res[0].cpf,
         nome_cliente: res[0].nome_cliente,
         data_nascimento: res[0].data_nascimento,
@@ -123,8 +121,8 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
         ativo: false,
         plano: res[0].plano
       }
-      const response = await UsuarioService.putUsuario(body)
-      if (response.status === 200) {
+      const response = await putUsuario(body)
+      if (response === "update with sucess") {
         toast.success('Matricula encerrada com Sucesso', {
           position: "top-right",
           autoClose: 2000,
@@ -165,7 +163,6 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
   const gridOptions = {
     columnDefs :[
       { headerName: "Nome", field: "nome", width: 150, minWidth: 90},
-      { headerName: "Estado da Matrícula",field: "estado_matricula", width: 150, minWidth: 90 },
       { headerName: "Cadastrado em", field: "cadastrado_em", width: 150, minWidth: 90 },
       { headerName: "Status Mensalidade",field: "status_matricula", width: 150, minWidth: 90 },
       { headerName: "Ultima Mensalidade Paga",field: "ultima_mensalidade_paga", width: 200, minWidth: 170 },
@@ -182,11 +179,18 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
     ], 
       onSelectionChanged: onSelectionChanged,
       rowSelection: 'single',
+      onCellClicked: (event: CellClickedEvent) => {
+        if (event.value !== undefined) {
+          let selectedRows = onSelectionChanged()
+          navigate('/Treino', {state: {id: selectedRows[0].id}})
+        }
+      },
+
   }
 
-  function onSelectionChanged() {
+  function onSelectionChanged(): any {
     const selectedRows = gridOptions.api.getSelectedRows();
-    //navigate('/Treino', {state: {id: selectedRows[0].id}})
+    return selectedRows
   }
 
 
