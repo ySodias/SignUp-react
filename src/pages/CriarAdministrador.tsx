@@ -1,20 +1,14 @@
 import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
-import { useLocation, useNavigate } from 'react-router-dom';
-import { FormCriarTreino } from '../components/forms/FormCriarTreino';
+import { useNavigate } from 'react-router-dom';
 import { cookies } from '../providers';
+import { FormCadastroAdministrador } from '../components/forms/FormCadastroAdministrador';
 
-export type ICadastroProps = {
-    nomeCliente: string
-    idCliente: number
-}
+export interface ICriarAdministradorProps {}
 
-const CriarTreino: React.FC<ICadastroProps > = (
-) => {
+const CriarAdministrador: React.FC<ICriarAdministradorProps > = () => {
   const navigate = useNavigate();
-  const {state} = useLocation();
-  const { nomeCliente, idCliente } = state;
-
+  
   useEffect(()=> {
     const isLogin = cookies.get('token')
     if (isLogin === null || isLogin === undefined) {
@@ -26,14 +20,14 @@ const CriarTreino: React.FC<ICadastroProps > = (
     <>
     <Container>
       <div className='d-flex justify-content-center p-5'>
-        <h1>Plano de Treino {nomeCliente}</h1>
+        <h1>Cadastro Administrador</h1>
       </div>
       <Row >
         <Col>
-          <FormCriarTreino idCliente={idCliente} nomeCliente={nomeCliente}/>
+          <FormCadastroAdministrador />
         </Col>
         <Col>
-        <img src="/src/assets/img/cadastro.svg" 
+        <img src="/src/assets/img/admin.svg" 
                 width="80%" height="80%"></img>
         </Col>
       </Row>
@@ -42,4 +36,4 @@ const CriarTreino: React.FC<ICadastroProps > = (
   )
 }
 
-export default CriarTreino
+export default CriarAdministrador

@@ -46,6 +46,7 @@ export const FormLogin = () => {
       .then((r)=> {
         if (r.status == 200) {
           cookies.set("token", r.data.token)
+          cookies.set("nivelPermissao", r.data.nivel_permissao)
           navigate('/')
         } else {
           toast.error('Falha ao logar! Usuário ou senha incorreto', {

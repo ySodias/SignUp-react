@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import { FormCadastro } from '../components/forms/FormCadastro';
 import { cookies } from '../providers';
+import { FormEditarAdministrador } from '../components/forms/FormEditarAdministrador';
 
-export interface ICadastroProps {}
+export interface IAdministradorProps {
+    id: number;
+}
 
-const Cadastro: React.FC<ICadastroProps > = () => {
+const EditarAdministrador: React.FC<IAdministradorProps > = ({
+    id
+}) => {
   const navigate = useNavigate();
   
   useEffect(()=> {
@@ -20,15 +24,15 @@ const Cadastro: React.FC<ICadastroProps > = () => {
     <>
     <Container>
       <div className='d-flex justify-content-center p-5'>
-        <h1>Cadastro</h1>
+        <h1>Editar Administrador</h1>
       </div>
       <Row >
         <Col>
-          <FormCadastro />
+          <FormEditarAdministrador />
         </Col>
         <Col>
-        <img src="/src/assets/img/cadastro.svg" 
-                width="80%" height="80%"></img>
+        <img src="/src/assets/img/admin.svg" 
+                width="100%" height="100%"></img>
         </Col>
       </Row>
     </Container>
@@ -36,4 +40,4 @@ const Cadastro: React.FC<ICadastroProps > = () => {
   )
 }
 
-export default Cadastro
+export default EditarAdministrador

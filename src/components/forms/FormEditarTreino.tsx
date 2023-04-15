@@ -34,6 +34,7 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
   const { id, nomeCliente } = state;
   const navigate = useNavigate()
 
+  const [idTreino, setIdTreino] = useState('')
   const [cpfUsuario, setCpfUsuario] = useState('');
   const [nomeExercicio, setNomeExercicio] = useState('');
   const [series, setSeries] = useState('')
@@ -47,6 +48,7 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
   const { getUsuario } = useUsuario();
 
   async function getDataUsuario() {
+    console.log(nomeCliente)
     const response = await getUsuario({nome_cliente: nomeCliente})
     return response;
   }
@@ -63,7 +65,6 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
       setCpfUsuario(resp[0].cpf)
       })
     getDataTreino().then((resp) => {
-        console.log(resp)
         setNomeExercicio(resp[0]?.nome_exercicio)
         setSeries(resp[0]?.series)
         setRepeticoes(resp[0]?.repeticoes)

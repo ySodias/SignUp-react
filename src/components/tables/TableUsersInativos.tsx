@@ -20,7 +20,8 @@ const SizeTable: CSS.Properties = {
 
 const SizeButtonStyle: CSS.Properties = {
   height: '3.5vh',
-  width: '3.5vw',
+  width: '2vw',
+  minWidth: '50px',
   padding: '0px'
 }
 

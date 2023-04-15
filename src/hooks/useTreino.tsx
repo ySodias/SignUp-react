@@ -20,10 +20,17 @@ export const useTreino = () => {
     return status
   }, []);
   
+  const postTreino = useCallback(async(body: any) => {
+    const { status, data } = await TreinoService.postTreino(body)
+    if (status != 201) throw new Error();
+    setTreino(data);
+    return status
+  }, []);
 
   return {
     treino,
     getTreino,
-    putTreino
+    putTreino,
+    postTreino
   }
 }

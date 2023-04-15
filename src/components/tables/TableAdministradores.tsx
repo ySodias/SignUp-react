@@ -1,17 +1,16 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { AgGridReact } from '@ag-grid-community/react';
-import { ColDef } from "@ag-grid-community/all-modules"
+import { AllCommunityModules, ColDef} from "@ag-grid-community/all-modules"
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 import CSS from 'csstype';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useAdministrador } from '../../hooks/useAdministrador';
 
 
-export type ITTableTreinoPros = {
-  nomeCliente: string;
-  rowDataSource: any;
+export type ITTableAdministradorPros = {
 }
 
 const SizeTable: CSS.Properties = {
@@ -26,17 +25,14 @@ const SizeButtonStyle: CSS.Properties = {
   padding: '0px'
 }
 
-export const TableTreino: React.FC<ITTableTreinoPros> = ({
-  nomeCliente,
-  rowDataSource
+export const TableAdministrador: React.FC<ITTableAdministradorPros> = ({
 }) => {
 
   const navigate = useNavigate()
 
   const handleButtonEditar = () => {
-    navigate('/EditarTreino', {state: {
+    navigate('/EditarAdministrador', {state: {
       id: Number(gridOptions.api.getSelectedRows()[0]?.id),
-      nomeCliente: nomeCliente
     }})
   }
 
@@ -49,12 +45,10 @@ export const TableTreino: React.FC<ITTableTreinoPros> = ({
 
   const gridOptions = {
     columnDefs :[
-      { headerName: "Exercícios", field: "nome_exercicio", filter: true, width: 150, minWidth: 90},
-      { headerName: "Repetições", field: "repeticoes", width: 150, minWidth: 90 },
-      { headerName: "Carga (kg)",field: "carga", width: 150, minWidth: 90 },
-      { headerName: "Frequência Semanal",field: "frequencia", width: 200, minWidth: 170 },
-      { headerName: "Data Início",field: "data_inicio", width: 200, minWidth: 170 },
-      { headerName: "Data Troca",field: "data_troca", width: 200, minWidth: 170 },
+      { headerName: "Nome", field: "nome", filter: true, width: 150, minWidth: 90},
+      { headerName: "Email", field: "email", filter: true, width: 150, minWidth: 90 },
+      { headerName: "Endereco",field: "endereco", width: 150, minWidth: 90 },
+      { headerName: "Telefone",field: "telefone", width: 200, minWidth: 170 },
       {  field: '',
       cellRenderer: buttonEditar, width: 150, minWidth: 90
       }
@@ -72,22 +66,26 @@ export const TableTreino: React.FC<ITTableTreinoPros> = ({
   }, []);
 
 
-  const InitialRowData: any[] = [];
+  const [administrador, setAdministrador] = useState();
+  const { getAdministrador } = useAdministrador()
 
-  const [rowData, setRowData] = useState(InitialRowData);
-
+  async function getData(){
+    return await getAdministrador({})
+  }
 
   useEffect(() => {
-    if (rowDataSource.length > 0) {
-      setRowData(rowDataSource)
-    }
+    getData().then(async(resp) => {
+        setAdministrador(resp)
+    })
+    console.log(administrador)
   },[])
 
 
   return (
     <div className="ag-theme-alpine table-ativos" style={SizeTable}>
       <AgGridReact
-          rowData={rowData}
+          modules={AllCommunityModules}
+          rowData={administrador}
           gridOptions={gridOptions}
           defaultColDef={defaultColDef}
           enableRangeSelection={true}>

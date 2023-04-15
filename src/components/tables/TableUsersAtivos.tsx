@@ -20,13 +20,15 @@ const SizeTable: CSS.Properties = {
 
 const SizeButtonStyle: CSS.Properties = {
   height: '3.5vh',
-  width: '3.5vw',
+  width: '2vw',
+  minWidth: '50px',
   padding: '0px'
 }
 
 const SizeButtonEncerrarStyle: CSS.Properties = {
   height: '3.5vh',
   width: '5vw',
+  minWidth: '100px',
   padding: '0px'
 }
 
@@ -34,16 +36,10 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
 
   const navigate = useNavigate()
-  const { getPagamentos, getPagamentosUsuario, putPagamentosUsuario, postPagamentoUsuario } = usePagamentos();
+  const { getPagamentos, getPagamentosUsuario, postPagamentoUsuario } = usePagamentos();
   const { getUsuario, putUsuario } = useUsuario();
 
-  const InitialRowData = [
-    {nome: "Toyota", 
-    dt_matricula: "2020-04-03 09:51:23.21051", 
-    vencimento_mensalidade: "9"},
-  ];
-
-  const [rowData, setRowData] = useState(InitialRowData);
+  const [rowData, setRowData] = useState();
 
   async function getData() {
     const response = await getPagamentos(true)
@@ -214,7 +210,4 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 )
 }
 
-function postPagamento(body: { id: number; cpf_usuario: any; data_vencimento: string; forma_pagamento: number; valor_pagamento: number; }) {
-  throw new Error('Function not implemented.');
-}
 

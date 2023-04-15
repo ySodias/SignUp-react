@@ -1,11 +1,13 @@
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
 import CSS from 'csstype';
 import { cookies } from '../../providers';
 import { useUsuario } from '../../hooks/useUsuario';
 import { TreinoService } from '../../service/Treino';
+import { useTreino } from '../../hooks/useTreino';
+import { toast } from 'react-toastify';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -21,26 +23,25 @@ const ButtonCancelarStyle: CSS.Properties = {
 }
 
 export type IFormCriarTreinoPros = {
-    idCliente: number, 
-    nomeCliente: string
+    idCliente: number
 }
 
 export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
-    idCliente    
+    data
 ) => {
 
     const navigate = useNavigate();
     const { getUsuario } = useUsuario();
+    const { postTreino } = useTreino();
     const [rowData, setRowData] = useState();
 
     async function getData() {
-        const response = await getUsuario(idCliente);
+        const response = await getUsuario({id: data.idCliente});
         return response;
     }
 
     const [cpf, setCPF] = useState();
     const [exercicio, setExercicio] = useState('');
-    const [tipoTreino, setTipoTreino] = useState('');
     const [repeticoes, setRepeticoes] = useState('');
     const [carga, setCarga] = useState('')
     const [frequencia, setFrequencia] = useState('');
@@ -56,14 +57,32 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
         const body = {
             cpf_usuario: cpf,
             nome_exercicio: exercicio,
-            modalidade: Number(tipoTreino),
             repeticoes: Number(repeticoes),
             carga: Number(carga),
             series: Number(series),
             frequencia: Number(frequencia),
             data_fim: fim
         }
-        const response = await TreinoService.postTreino(body)
+        await postTreino(body).then(async(response)=>{
+          if (response === 201) {
+            toast.success('Treino Criado com Sucesso', {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
+            setTimeout(() => 
+            {
+              navigate('/Alunos')
+            },
+            2500);
+          }
+          }
+          )
     }
 
     useEffect(() => {
@@ -129,7 +148,7 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
               </Col>
               <Col>
               <Form.Group className="mb-3" controlId="formEndereco">
-                  <Form.Label>Fim <span className="obrigatorio">*</span></Form.Label>
+                  <Form.Label>Data Fim <span className="obrigatorio">*</span></Form.Label>
                   <Form.Control type="date" placeholder="Endereço"
                   onChange={(e) => setFim(e.target.value)} />
                 </Form.Group>
@@ -150,6 +169,7 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
                 </div>
             </div>
               </Form>
+              <ToastContainer />
             </>
             )
         }

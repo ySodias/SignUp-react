@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Container, Col, Dropdown } from 'react-bootstrap'
-import { useModal } from '../hooks/useModal';
-
+import { Row, Container, Col, Dropdown, Button } from 'react-bootstrap'
 import CSS from 'csstype';
 import { cookies } from '../providers';
 import { useNavigate } from 'react-router-dom';
-import { Menu, MenuItem, ProSidebarProvider, Sidebar, SubMenu } from 'react-pro-sidebar';
-import { FormCadastroAdministrador } from '../components/forms/FormCadastroAdministrador';
+import { TableAdministrador } from '../components/tables/TableAdministradores';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 export interface IPagamentosProps {}
 
-const rowStyle: CSS.Properties = {
-  height: '40.35vh'
+const colStyle: CSS.Properties = {
+  height: '70vh',
+  minHeight: '600px'
 }
 
-const dropdownStyle: CSS.Properties = {
-  backgroundColor: '#fb6dba',
-}
-
-let dropdownHoverStyle: CSS.Properties = {
-  backgroundColor: '#d63384'
+const FontStyle: CSS.Properties = {
+  fontStyle: 'bold',
+  fontWeight: 700,
+  fontSize: '18px',
+  color: '#000000',
 }
 
 const Administraodr: React.FC<IPagamentosProps > = (props) => {
@@ -28,43 +27,65 @@ const Administraodr: React.FC<IPagamentosProps > = (props) => {
   
   useEffect(()=> {
     const isLogin = cookies.get('token')
+    
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }
   }, [])
 
-  const { isShow, setIsShow } = useModal(false);
-  const [ hoverCriarFuncionario, sethoverCriarFuncionario]  = useState(false)
-
-  const buttonForm = () => {
-    (document.activeElement as HTMLElement).blur()
-    setIsShow(!isShow);
+  function isAdmin() {
+    if(cookies.get('nivelPermissao') === '5'){
+      return true
+    } else return false
   }
 
-  return (
-    <>
-    <Container>
-    <div className='d-flex justify-content-center p-5'>
-        <h1>Administrador</h1>
-      </div>
-      <Row className="p-5">
-        <Col sm={2}>
-            <Dropdown.Menu show style={dropdownStyle}>
-            <Dropdown.Item eventKey="2" onClick={buttonForm} onMouseEnter={()=>{
-              sethoverCriarFuncionario(true)
-            }} onMouseOut={()=>{sethoverCriarFuncionario(false)}} style={ hoverCriarFuncionario ? dropdownHoverStyle : null}>Criar Funcionário</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Editar Funcionário</Dropdown.Item>
-          </Dropdown.Menu>
-        </Col>
-        <Col></Col>
-        <Col sm={8}>
-        {isShow == true ? <FormCadastroAdministrador /> : <></>}
-        </Col>
+  const returnToHome = () => {
+    navigate('/')
+  }
+
+  const goToCriarAdministrador = () => {
+    navigate('/CriarAdministrador')
+  }
+
+  if (isAdmin()) {
+    return (
+      <>
+      <Container>
+      <div className='d-flex justify-content-center p-5'>
+        <h1>Administrador
+          <Button variant="link" className="px-3" onClick={goToCriarAdministrador}>
+            <FontAwesomeIcon className="pb-2" style={FontStyle} icon={faPenToSquare}></FontAwesomeIcon></Button>
+              </h1>
+            </div>
+          <Row className='p-5'>
+        <TableAdministrador />
       </Row>
-      {isShow == false ?  <Row style={rowStyle}></Row>: <></>}
-    </Container>
-    </>
-  )
+      </Container>
+     </>
+    )
+  } else {
+    return (
+      <>
+      <Container>
+        <div className='d-flex justify-content-center p-5'>
+          <h1>Ops... Você não tem autorização para acessar essa página  </h1>
+        </div>
+        <Row>
+          <Col sm={8}></Col>
+          <Col>
+          <Button variant="link" onClick={returnToHome}>Clique Aqui</Button><span>para retornar a Página Inicial</span>
+          </Col>
+        </Row>
+        <Row >
+          <Col style={colStyle}>
+          <img src="/src/assets/img/naoAutorizado.svg" 
+                  width="100%" height="100%" ></img>
+          </Col>
+        </Row>
+      </Container>
+      </>
+    )
+  }
 }
 
 export default Administraodr

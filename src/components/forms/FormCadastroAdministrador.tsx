@@ -55,8 +55,6 @@ export const FormCadastroAdministrador = () => {
 
   return (
     <>
-    <h4 className="align-self-center m-3">Criar Funcionário</h4>
-    <hr className='mb-5'></hr>
     <Form className="align-self-center m-3">
 
 <Form.Group className="mb-3" controlId="formUsername">
