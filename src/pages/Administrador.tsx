@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Row, Container, Col } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react';
+import { Row, Container, Col, Dropdown } from 'react-bootstrap'
 import { useModal } from '../hooks/useModal';
 
 import CSS from 'csstype';
@@ -14,6 +14,14 @@ const rowStyle: CSS.Properties = {
   height: '40.35vh'
 }
 
+const dropdownStyle: CSS.Properties = {
+  backgroundColor: '#fb6dba',
+}
+
+let dropdownHoverStyle: CSS.Properties = {
+  backgroundColor: '#d63384'
+}
+
 const Administraodr: React.FC<IPagamentosProps > = (props) => {
 
   const navigate = useNavigate();
@@ -26,8 +34,10 @@ const Administraodr: React.FC<IPagamentosProps > = (props) => {
   }, [])
 
   const { isShow, setIsShow } = useModal(false);
+  const [ hoverCriarFuncionario, sethoverCriarFuncionario]  = useState(false)
 
   const buttonForm = () => {
+    (document.activeElement as HTMLElement).blur()
     setIsShow(!isShow);
   }
 
@@ -39,14 +49,12 @@ const Administraodr: React.FC<IPagamentosProps > = (props) => {
       </div>
       <Row className="p-5">
         <Col sm={2}>
-        <ProSidebarProvider>
-        <Sidebar backgroundColor="#FB6DBA">
-            <Menu>
-                <MenuItem onClick={buttonForm}> Cadastrar Funcionário </MenuItem>
-                <MenuItem> Contatar Suporte </MenuItem>
-            </Menu>
-            </Sidebar>
-            </ProSidebarProvider>
+            <Dropdown.Menu show style={dropdownStyle}>
+            <Dropdown.Item eventKey="2" onClick={buttonForm} onMouseEnter={()=>{
+              sethoverCriarFuncionario(true)
+            }} onMouseOut={()=>{sethoverCriarFuncionario(false)}} style={ hoverCriarFuncionario ? dropdownHoverStyle : null}>Criar Funcionário</Dropdown.Item>
+            <Dropdown.Item eventKey="3">Editar Funcionário</Dropdown.Item>
+          </Dropdown.Menu>
         </Col>
         <Col></Col>
         <Col sm={8}>

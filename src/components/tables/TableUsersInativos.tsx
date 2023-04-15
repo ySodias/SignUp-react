@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePagamentos } from '../../hooks/usePagamentos';
 import { AgGridReact } from '@ag-grid-community/react';
-import {AllCommunityModules} from "@ag-grid-community/all-modules"
+import {AllCommunityModules, ColDef} from "@ag-grid-community/all-modules"
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
@@ -15,7 +15,7 @@ export interface ITablePagamentosPros {}
 
 const SizeTable: CSS.Properties = {
   height: '50vh',
-  width: '60vw',
+  width: '100%',
 }
 
 const SizeButtonStyle: CSS.Properties = {
@@ -72,7 +72,7 @@ export const TableUsersInativos: React.FC<ITablePagamentosPros > = () => {
   }
   const gridOptions = {
     columnDefs: [
-      { headerName: "Nome", field: "nome", width: 150, minWidth: 90},
+      { headerName: "Nome", field: "nome", filter: true, width: 150, minWidth: 90},
       { headerName: "Cadastrado em", field: "cadastrado_em", width: 150, minWidth: 90 },
       { headerName: "Status Mensalidade",field: "status_matricula", width: 150, minWidth: 90 },
       { headerName: "Desativado em",field: "ultima_mensalidade_paga", width: 200, minWidth: 170 },
@@ -82,6 +82,15 @@ export const TableUsersInativos: React.FC<ITablePagamentosPros > = () => {
     ],
     rowSelection: 'single',
   }
+
+  const defaultColDef = useMemo<ColDef>(() => {
+    return {
+      flex: 1,
+      minWidth: 200,
+      resizable: true,
+      floatingFilter: true,
+    };
+  }, []);
 
   const InitialRowData = [
     {nome: "Toyota", 
@@ -108,7 +117,7 @@ export const TableUsersInativos: React.FC<ITablePagamentosPros > = () => {
     <div className="ag-theme-alpine table-inativos" style={SizeTable}>
       <AgGridReact
           modules={AllCommunityModules}
-          defaultColDef={{ flex: 1 }}
+          defaultColDef={defaultColDef}
           rowData={rowData}
           gridOptions={gridOptions}
           undoRedoCellEditing={true}>

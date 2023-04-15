@@ -121,9 +121,9 @@ export const FormCadastro = () => {
                   <Form.Select placeholder="Pesquisar por Tipo de Treino" 
                   onChange={(e) => setPlano(e.target.value)} >
                    <option></option>
-                    <option value="1">Mensal</option>
-                    <option value="2">Semestral</option>
-                    <option value="3">Anual</option>
+                    <option value="6">Mensal</option>
+                    <option value="7">Semestral</option>
+                    <option value="8">Anual</option>
                 </Form.Select>
                 </Form.Group>
             </Col>

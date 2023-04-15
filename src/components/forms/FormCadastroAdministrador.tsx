@@ -28,6 +28,7 @@ export const FormCadastroAdministrador = () => {
   const [endereco, setEndereco] = useState('')
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
+  const [nivelPermissao, setNivelPermissao] = useState('');
   const [ativo, setAtivo] = useState(true);
 
   const handleSubmit = () => {
@@ -54,7 +55,8 @@ export const FormCadastroAdministrador = () => {
 
   return (
     <>
-    
+    <h4 className="align-self-center m-3">Criar Funcionário</h4>
+    <hr className='mb-5'></hr>
     <Form className="align-self-center m-3">
 
 <Form.Group className="mb-3" controlId="formUsername">
@@ -77,6 +79,17 @@ export const FormCadastroAdministrador = () => {
       onChange={(e) => setDataNascimento(e.target.value)} />
     </Form.Group>
     </Col>
+    <Col>
+            <Form.Group className="mb-3" controlId="formNivelPermissao">
+                  <Form.Label>Nível de Permissão <span className="obrigatorio">*</span></Form.Label>
+                  <Form.Select
+                  onChange={(e) => setNivelPermissao(e.target.value)} >
+                   <option></option>
+                    <option value="4">Funcionário</option>
+                    <option value="5">Administrador</option>
+                </Form.Select>
+                </Form.Group>
+            </Col>
   </Row>
   <Row>
     <Col>

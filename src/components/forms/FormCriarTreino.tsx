@@ -97,18 +97,6 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
             </Col>
             </Row>
               <Row className='d-flex'>
-              <Col>
-                <Form.Group className="mb-3" controlId="formTipoTreino">
-                  <Form.Label>Tipo de Treino <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Select placeholder="Pesquisar por Tipo de Treino" 
-                  onChange={(e) => setTipoTreino(e.target.value)} >
-                   <option>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </Form.Select>
-                </Form.Group>
-                </Col>
                 <Col>
                 <Form.Group className="mb-3" controlId="formCPF">
                   <Form.Label>Repetições <span className="obrigatorio">*</span></Form.Label>

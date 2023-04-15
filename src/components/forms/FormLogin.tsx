@@ -6,6 +6,7 @@ import { AutenticacaoService } from "../../service/Autenticacao"
 import { AxiosError} from 'axios'
 import CSS from 'csstype';
 import { cookies } from '../../providers';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const ButtonMatricularStyle: CSS.Properties = {
@@ -41,48 +42,73 @@ export const FormLogin = () => {
         password: password
     }
 
-    const response = await autenticacaoService.postLogin(body)
+    await autenticacaoService.postLogin(body)
       .then((r)=> {
-        cookies.set("token", r.data.token)
-        navigate('/')
-      }
+        if (r.status == 200) {
+          cookies.set("token", r.data.token)
+          navigate('/')
+        } else {
+          toast.error('Falha ao logar! Usuário ou senha incorreto', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+        }
+      } 
       )
       .catch ((error: AxiosError) =>  {
         console.log(error.response.status)
+        toast.error('Falha ao logar! Usuário ou senha incorreto', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
     })
   }
 
   return (
-        <Form className="align-self-center m-3">
-
-            <Form.Group className="mb-3" controlId="formEmail">
-              <Form.Label>Email <span className="obrigatorio">*</span></Form.Label>
-              <Form.Control type="email" placeholder="name@example.com" 
-              onChange={(e) => setEmail(e.target.value)} />
-            </Form.Group>
-          <Row className='d-flex'>
-            <Col>
-            <Form.Group className="mb-3" controlId="formPassword">
-              <Form.Label>Senha <span className="obrigatorio">*</span></Form.Label>
-              <Form.Control type="password" placeholder="Senha"
-              onChange={(e) => setPassword(e.target.value)} />
-            </Form.Group>
-            </Col>
-          </Row>
-            <div className='d-flex justify-content-center p-3'>
-                <div className='p-3'>
-                  <Button onClick={() => navigate('/')}
-                    style={ButtonCancelarStyle}
-                     type="submit">
-                      Cancelar
-                  </Button></div>
-                <div className='p-3'>
-                  <Button 
-                    style={ButtonMatricularStyle} type="submit" onClick={handleSubmit}> 
-                      Login
-                  </Button>
-                </div>
+    <>
+      <Form className="align-self-center m-3">
+        <Form.Group className="mb-3" controlId="formEmail">
+          <Form.Label>Email <span className="obrigatorio">*</span></Form.Label>
+          <Form.Control type="email" placeholder="name@example.com" 
+          onChange={(e) => setEmail(e.target.value)} />
+        </Form.Group>
+        <Row className='d-flex'>
+        <Col>
+        <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Label>Senha <span className="obrigatorio">*</span></Form.Label>
+          <Form.Control type="password" placeholder="Senha"
+          onChange={(e) => setPassword(e.target.value)} />
+        </Form.Group>
+        </Col>
+        </Row>
+        <div className='d-flex justify-content-center p-3'>
+            <div className='p-3'>
+              <Button onClick={() => navigate('/')}
+                style={ButtonCancelarStyle}
+                type="submit">
+                  Cancelar
+              </Button></div>
+            <div className='p-3'>
+              <Button 
+                style={ButtonMatricularStyle} type="submit" onClick={handleSubmit}> 
+                  Login
+              </Button>
             </div>
-    </Form>
+        </div>
+      </Form>
+    <ToastContainer />
+    </>
   )
 }

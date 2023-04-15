@@ -37,3 +37,7 @@ button.p-3.exalunos{
 .obrigatorio{
   color: red;
 }
+
+.dropdown-item:focus {
+background-color: #fb6dba !important;
+}

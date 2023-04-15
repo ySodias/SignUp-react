@@ -37,7 +37,7 @@ const Treino: React.FC<ITreinoProps> = ({
   const [usuario, setUsuario] = useState();
 
   async function getData(usuario: string) {
-    const response = await getTreino(usuario);
+    const response = await getTreino({nome_cliente: usuario});
     return response;
   }
 
@@ -93,7 +93,7 @@ const Treino: React.FC<ITreinoProps> = ({
           </h1>
           </div>
         <Row className='p-5'>
-          <TableTreino rowDataSource={rowData[0]}/>
+          <TableTreino rowDataSource={rowData[0]} nomeCliente={usuario[0]?.nome_cliente}/>
         </Row></>
       )
     }

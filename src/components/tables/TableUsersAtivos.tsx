@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import { usePagamentos } from '../../hooks/usePagamentos';
 import { AgGridReact } from '@ag-grid-community/react';
-import {AllCommunityModules, CellClickedEvent} from "@ag-grid-community/all-modules"
+import {AllCommunityModules, CellClickedEvent, ColDef} from "@ag-grid-community/all-modules"
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import CSS from 'csstype';
@@ -15,7 +15,7 @@ export interface ITablePagamentosPros {}
 
 const SizeTable: CSS.Properties = {
   height: '50vh',
-  width: '60vw',
+  width: '100%',
 }
 
 const SizeButtonStyle: CSS.Properties = {
@@ -34,7 +34,7 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
 
   const navigate = useNavigate()
-  const { getPagamentos, getPagamentosUsuario, putPagamentosUsuario } = usePagamentos();
+  const { getPagamentos, getPagamentosUsuario, putPagamentosUsuario, postPagamentoUsuario } = usePagamentos();
   const { getUsuario, putUsuario } = useUsuario();
 
   const InitialRowData = [
@@ -61,7 +61,6 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
 
   const handleButtonEditar = () => {
-    console.log(gridOptions.api.getSelectedRows()[0]?.id)
     navigate('/EditarCadastro', {state: {
       id: Number(gridOptions.api.getSelectedRows()[0]?.id)
     }})
@@ -72,19 +71,17 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
     await getUsuario({id: id}).then(async (res) => {
        await getPagamentosUsuario(res[0].cpf).then(async(resp)=>{
         if (resp){
-          let antiga_data_ventcimento = new Date(resp.data_vencimento)
-          let nova_data_vencimento = new Date()
-          nova_data_vencimento.setMonth(antiga_data_ventcimento.getMonth() + 1)
+          console.log(resp)
+          let data_ventcimento = new Date(resp.data_vencimento)
+          data_ventcimento.setMonth(data_ventcimento.getMonth()+1)
           const body = {
-            id: Number(resp.id),
             cpf_usuario: res[0].cpf,
-            data_vencimento: nova_data_vencimento.toISOString().split('T')[0],
+            data_vencimento: data_ventcimento.toISOString().substring(0, 10),
             forma_pagamento: Number(resp.forma_pagamento),
             valor_pagamento: Number(resp.valor_pagamento)
           }
-          await putPagamentosUsuario(body).then(async(r) => {
-          console.log(r === 'update with sucess')
-          if (r === 'update with sucess'){
+          await postPagamentoUsuario(body).then(async(r) => {
+          if (r === 201){
             toast.success('Pagamento realizado com Sucesso', {
               position: "top-right",
               autoClose: 2000,
@@ -97,7 +94,7 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
               });
             setTimeout(() => 
             {
-                window.location.reload(); 
+              window.location.reload(); 
             },
             2500);
 
@@ -162,11 +159,12 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
   const gridOptions = {
     columnDefs :[
-      { headerName: "Nome", field: "nome", width: 150, minWidth: 90},
+      { headerName: "Nome", field: "nome", filter: true, width: 200, minWidth: 170},
       { headerName: "Cadastrado em", field: "cadastrado_em", width: 150, minWidth: 90 },
-      { headerName: "Status Mensalidade",field: "status_matricula", width: 150, minWidth: 90 },
-      { headerName: "Ultima Mensalidade Paga",field: "ultima_mensalidade_paga", width: 200, minWidth: 170 },
-      { headerName: "Vencimento da Mensalidade",field: "vencimento_mensalidade", width: 200, minWidth: 170 },
+      { headerName: "Status Mensalidade", filter: true, field: "status_matricula", width: 200, minWidth: 170 },
+      { headerName: "Ultima Mensalidade Paga", field: "ultima_mensalidade_paga", width: 200, minWidth: 170 },
+      { headerName: "Vencimento da Mensalidade", field: "vencimento_mensalidade", width: 200, minWidth: 170 },
+      { headerName: "Valor", field: "valor", width: 200, minWidth: 170 },
       {  field: '',
         cellRenderer: buttonPagar, width: 150, minWidth: 90
       },
@@ -188,6 +186,15 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
 
   }
 
+  const defaultColDef = useMemo<ColDef>(() => {
+    return {
+      flex: 1,
+      minWidth: 200,
+      resizable: true,
+      floatingFilter: true,
+    };
+  }, []);
+
   function onSelectionChanged(): any {
     const selectedRows = gridOptions.api.getSelectedRows();
     return selectedRows
@@ -198,12 +205,16 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
     <div className="ag-theme-alpine table-ativos" style={SizeTable}>
       <AgGridReact
           modules={AllCommunityModules}
-          defaultColDef={{ flex: 1 }}
+          defaultColDef={defaultColDef}
           rowData={rowData}
           gridOptions={gridOptions}>
       </AgGridReact>
       <ToastContainer />
   </div>
 )
+}
+
+function postPagamento(body: { id: number; cpf_usuario: any; data_vencimento: string; forma_pagamento: number; valor_pagamento: number; }) {
+  throw new Error('Function not implemented.');
 }
 

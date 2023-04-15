@@ -72,3 +72,11 @@ export const Administrador = React.lazy(() => {
   ])
   .then(([moduleExports]) => moduleExports);
 });
+
+export const EditarTreino = React.lazy(() => {
+  return Promise.all([
+    import('./pages/EditarTreino'),
+    new Promise(resolve => setTimeout(resolve, 500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});

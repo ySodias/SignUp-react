@@ -28,10 +28,19 @@ export const usePagamentos = () => {
     return data
   }, []);
 
+  const postPagamentoUsuario = useCallback(async(body: any) => {
+    const { status, data } = await PagamentosService.postPagamento(body);
+    if (status != 201) throw new Error();
+    setPagamentos(data);
+    return status
+  }, []);
+
+
   return {
     pagamentos,
     getPagamentos,
     getPagamentosUsuario,
-    putPagamentosUsuario
+    putPagamentosUsuario,
+    postPagamentoUsuario
   }
 }
