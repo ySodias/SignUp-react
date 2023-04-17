@@ -44,7 +44,7 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
     <div>
       <Row >
         <img className="img-fluid" 
-        src='src/assets/img/carrosel.png'></img>
+        src='https://raw.githubusercontent.com/ySodias/SignUp-react/main/src/assets/img/carrosel.png'></img>
       </Row>
       <Container>
         <Row> 

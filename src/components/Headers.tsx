@@ -15,7 +15,7 @@ export function Header (){
     <>
       <Row style={HeigthRowStyle}>
         <Col className="d-flex justify-content-end align-items-center" > 
-          <a href='/'><img src="src\assets\img\logo.svg" alt="" height="70px" width="70px" /></a>
+          <a href='/'><img src="https://raw.githubusercontent.com/ySodias/SignUp-react/72776577e14f55daf29a7cac6119f8f728af5974/src/assets/img/logo.svg" alt="" height="70px" width="70px" /></a>
         </Col>
         <Col className="p-3 d-flex justify-content-end align-items-center">
           <a className='p-2 text-decoration-none' href='/Dashboard'>Dashboards</a>
