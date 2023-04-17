@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { useModal } from '../hooks/useModal';

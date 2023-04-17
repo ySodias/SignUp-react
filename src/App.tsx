@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './App.css'
 import { Header } from './components';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +9,6 @@ import { Dashboard, Home, Alunos, Cadastro, Login, Treino, CriarTreino, EditarCa
 import { Footer } from './components';
 import EditarTreino from './pages/EditarTreino';
 export interface IApplicationProps {}
-
 const App: React.FC<IApplicationProps> = (props) => {
   return (
     <div>

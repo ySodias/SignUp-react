@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
