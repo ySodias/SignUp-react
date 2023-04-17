@@ -27,7 +27,7 @@ const CriarAdministrador: React.FC<ICriarAdministradorProps > = () => {
           <FormCadastroAdministrador />
         </Col>
         <Col>
-        <img src="/src/assets/img/admin.svg" 
+        <img src="https://github.com/ySodias/SignUp-react/blob/main/src/assets/img/admin.svg" 
                 width="80%" height="80%"></img>
         </Col>
       </Row>

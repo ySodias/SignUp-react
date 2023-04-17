@@ -31,7 +31,7 @@ const EditarAdministrador: React.FC<IAdministradorProps > = ({
           <FormEditarAdministrador />
         </Col>
         <Col>
-        <img src="/src/assets/img/admin.svg" 
+        <img src="https://raw.githubusercontent.com/ySodias/SignUp-react/72776577e14f55daf29a7cac6119f8f728af5974/src/assets/img/admin.svg" 
                 width="100%" height="100%"></img>
         </Col>
       </Row>

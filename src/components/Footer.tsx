@@ -30,7 +30,7 @@ export function Footer (){
       <div style={HeigthRowStyle}>
           <Row className="m-0 pb-0">
         <Col className="align-items-center d-flex justify-content-end" > 
-          <img src="src\assets\img\logo.svg" alt="" height="150px" width="150px" />
+          <img src="https://raw.githubusercontent.com/ySodias/SignUp-react/72776577e14f55daf29a7cac6119f8f728af5974/src/assets/img/logo.svg" alt="" height="150px" width="150px" />
         </Col>
         <Col md="auto" className="p-3  pt-0 d-flex pb-0 mb-0">
           <dl className='p-3 pb-0'>  
