@@ -3,7 +3,8 @@ import './App.css'
 import { Header } from './components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Switc } from 'react-router-dom';
+import { Route } from "react-router";
+import { BrowserRouter, Routes } from 'react-router-dom';
 import Loader from 'react-ts-loaders/dist';
 import { Dashboard, Home, Alunos, Cadastro, Login, Treino, CriarTreino, EditarCadastro, Administrador, CriarAdministrador, EditarAdministrador } from './AppRoutes';
 import { Footer } from './components';
@@ -15,7 +16,6 @@ const App: React.FC<IApplicationProps> = (props) => {
       <Suspense fallback={<Loader />} >
         <Header />
          <BrowserRouter>
-         <Switch>
          <Routes>
             <Route path = '/' element={<Home />} />
             <Route path = '/dashboard' element={<Dashboard />} />
@@ -30,7 +30,6 @@ const App: React.FC<IApplicationProps> = (props) => {
             <Route path = '/criarAdministrador' element={<CriarAdministrador />} />
             <Route path = '/editarAdministrador' element={<EditarAdministrador />} />
           </Routes>
-         </Switch>
          </BrowserRouter>
          <Footer />
       </Suspense>
