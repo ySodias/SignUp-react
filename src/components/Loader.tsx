@@ -1,4 +1,5 @@
 import Loader from 'react-ts-loaders'
+import React from 'react';
 
 const Loading = () => {
   return (
