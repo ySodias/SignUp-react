@@ -1,3 +1,4 @@
+import React from 'react';
 import { Row, Col, Button, Container } from 'react-bootstrap';
 import CSS from 'csstype';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
