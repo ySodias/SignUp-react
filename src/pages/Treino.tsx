@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom';

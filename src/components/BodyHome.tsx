@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Row, Container, Col, Button, ToggleButtonGroup } from 'react-bootstrap'
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';

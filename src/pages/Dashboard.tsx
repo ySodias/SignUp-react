@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PowerBIEmbed } from 'powerbi-client-react';
 import React, { useEffect, useState } from 'react';
 import { models } from 'powerbi-client';

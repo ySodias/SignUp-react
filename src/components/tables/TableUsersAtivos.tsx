@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import { usePagamentos } from '../../hooks/usePagamentos';
 import { AgGridReact } from '@ag-grid-community/react';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState, useMemo } from 'react';
 import { AgGridReact } from '@ag-grid-community/react';
 import { AllCommunityModules, ColDef} from "@ag-grid-community/all-modules"

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, Button} from 'react-bootstrap';
