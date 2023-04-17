@@ -1,0 +1,21 @@
+import { Row,Col } from 'react-bootstrap';
+import CSS from 'csstype';
+
+const HeigthRowStyle: CSS.Properties = {
+  height: '10vh',
+  backgroundColor:'#FB6DBA'
+}
+
+
+export function Header (){
+  return(
+    <>
+      <Row style={HeigthRowStyle}>
+        <Col  > <img src="src\assets\img\logo.svg" alt="" /></Col>
+        <Col ></Col>
+        <Col></Col>
+        
+      </Row>
+    </>
+  )
+}
