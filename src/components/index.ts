@@ -1,3 +1,3 @@
 export * from './BodyHome';
-export * from './Header';
+export * from './Headers';
 export * from './Footer';
