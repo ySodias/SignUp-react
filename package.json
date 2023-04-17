@@ -1,9 +1,12 @@
 {
+  "homepage": "http://ySodias.github.io/signup-react",
   "name": "signup",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
@@ -29,7 +32,7 @@
     "react-bootstrap": "^2.2.2",
     "react-dom": "^17.0.2",
     "react-pro-sidebar": "^1.0.0",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.10.0",
     "react-spinners": "^0.11.0",
     "react-toastify": "^9.1.2",
     "react-ts-loaders": "^1.2.1",
