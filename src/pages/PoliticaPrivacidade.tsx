@@ -19,9 +19,10 @@ const PoliticaPrivacidade: React.FC = (props) => {
             <Col></Col>
             <Col>
             <div>
-            <embed src="../src/assets/docs/politica_privacidade.pdf" 
-            type="application/pdf" 
-            width="100%" height="100%" style={pdfStyel}/>
+            <iframe 
+            src="https://docs.google.com/document/d/e/2PACX-1vRSjRs1HjEiDs7zDYExlcW1NH-MT_StWJ38b3nWiYdGs3KhjnaeUKIXWf0bO7iWpfwtcLBlqb1XpdO-/pub?embedded=true"
+            width="100%" height="100%" style={pdfStyel}></iframe>
+            
         </div></Col>
             <Col></Col>
         </Row>
