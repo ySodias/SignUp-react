@@ -1,15 +1,14 @@
 
 import { faArrowRightFromBracket, faArrowRightToBracket, faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { cookies } from '../../providers';
 
 
 const handleLogout = () => {
-    cookies.remove('token')
+    sessionStorage.removeItem('token')
   }
 
 const ButtonLogin = () => {
-    const isLoggedIn = cookies.get('token') ? true : false;
+    const isLoggedIn = sessionStorage.getItem('token') ? true : false;
    
     return (
         <>

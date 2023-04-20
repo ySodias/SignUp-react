@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
-import { cookies } from '../../providers';
-import { UsuarioService } from '../../service/Usuario';
+
 import { PagamentosService } from '../../service/Pagamentos';
+import { useUsuario } from '../../hooks/useUsuario';
+import { usePagamentos } from '../../hooks/usePagamentos';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -22,6 +23,8 @@ const ButtonCancelarStyle: CSS.Properties = {
 export const FormCadastro = () => {
 
   const navigate = useNavigate()
+  const { postUsuario } = useUsuario()
+  const { postPagamentoUsuario } = usePagamentos()
 
   const [username, setUsername] = useState('');
   const [cpf, setCPF] = useState('');
@@ -49,32 +52,24 @@ export const FormCadastro = () => {
       ativo: ativo,
       plano: Number(plano)
     }
-    const response = await UsuarioService.postUsuario(body)
-    if (response.status === 201) {
-      const valorPagamento = defineValorPagamento()
-      const bodyPagamento = {
-        cpf_usuario: cpf,
-        data_vencimento: vencimento,
-        forma_pagamento: Number(formaPagamento),
-        valor_pagamento: Number(valorPagamento)
+    postUsuario(body).then((response)=>{
+      console.log(response)
+      if (response.status === 201) {
+        const valorPagamento = Number(plano) == 1 ? 100 : (Number(plano) == 2 ? 85.00 : 79.00)
+        const bodyPagamento = {
+          cpf_usuario: cpf,
+          data_vencimento: vencimento,
+          forma_pagamento: Number(formaPagamento),
+          valor_pagamento: Number(valorPagamento)
+        }
+        postPagamentoUsuario(bodyPagamento).then((responsePagamento)=>{
+          if (responsePagamento === 201) {
+            navigate('/Alunos')
+          }
+        })
       }
-      const responsePagamento = await PagamentosService.postPagamento(bodyPagamento)
-      if (responsePagamento.status === 201) {
-        navigate('/Alunos')
-      }
-    }
-  }
-
-  const defineValorPagamento = () => {
-    if (Number(plano) === 1){
-      return 100
-    }
-    if (Number(plano) === 2){
-      return 85.00
-    }
-    if (Number(plano) === 3){
-      return 79.00
-    }
+    })
+    
   }
 
   return (

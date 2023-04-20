@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import { cookies } from '../providers';
 import { FormCadastroAdministrador } from '../components/forms/FormCadastroAdministrador';
 
 export interface ICriarAdministradorProps {}
@@ -10,7 +9,7 @@ const CriarAdministrador: React.FC<ICriarAdministradorProps > = () => {
   const navigate = useNavigate();
   
   useEffect(()=> {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }

@@ -22,9 +22,17 @@ export const useUsuario = () => {
     return data
   }, []);
 
+  const postUsuario = useCallback(async(body: any) => {
+    const { status, data } = await UsuarioService.postUsuario(body);
+    if (status != 201) throw new Error();
+    setUsuario(data);
+    return {status:status, data:data}
+  }, []);
+
   return {
     usuario,
     getUsuario,
     putUsuario,
+    postUsuario
   }
 }

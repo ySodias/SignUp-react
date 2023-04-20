@@ -35,15 +35,14 @@ export function Footer (){
         <Col md="auto" className="p-3  pt-0 d-flex pb-0 mb-0">
           <dl className='p-3 pb-0'>  
           <dt><a className='text-decoration-none'>Sobre</a></dt>
-          <dd><a className='text-decoration-none' href=''>Política de Privacidade</a></dd>
+          <dd><a className='text-decoration-none' href='/politicaPrivacidade'>Política de Privacidade</a></dd>
           </dl>
           <dl className='text-decoration-none p-3 pb-0 mb-0'>
           <dt><a className='text-decoration-none'>Serviços</a></dt>
           <dd><a className='text-decoration-none' href='/cadastro'>Cadastrar Novo Aluno</a></dd>
-          <dd><a className='text-decoration-none' href=''>Atualizar Cadastro</a></dd>
-          <dd><a className='text-decoration-none' href='/pagamento'>Receber Pagamento</a></dd>
-          <dd><a className='text-decoration-none' href=''>Cancelar Matrícula</a></dd>
-          <dd><a className='text-decoration-none' href='/dashboard'>Dashboards</a></dd>
+          <dd><a className='text-decoration-none' href='/alunos'>Receber Pagamento</a></dd>
+          <dd><a className='text-decoration-none' href='/alunos'>Cancelar Matrícula</a></dd>
+          <dd><a className='text-decoration-none' href='/dashboard'>Relatórios</a></dd>
           </dl>
           <dl className='p-3 pb-0 mb-0'>
           <dt><a className='text-decoration-none'>Contato</a></dt>

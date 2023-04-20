@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
 import CSS from 'csstype';
-import { cookies } from '../../providers';
 import { useUsuario } from '../../hooks/useUsuario';
 import { TreinoService } from '../../service/Treino';
 import { useTreino } from '../../hooks/useTreino';
@@ -87,7 +86,7 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
     }
 
     useEffect(() => {
-        const isLogin = cookies.get('token')
+        const isLogin = sessionStorage.getItem('token')
         if (isLogin === null || isLogin === undefined) {
           navigate('/Login')
         }

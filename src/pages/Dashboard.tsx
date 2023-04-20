@@ -3,7 +3,6 @@ import { PowerBIEmbed } from 'powerbi-client-react';
 import React, { useEffect, useState } from 'react';
 import { models } from 'powerbi-client';
 import { useNavigate } from 'react-router-dom';
-import { cookies } from '../providers';
 import { useDashboards } from '../hooks/useDashboards';
 import { Container, Row } from 'react-bootstrap';
 import CSS from 'csstype';
@@ -19,7 +18,7 @@ const Dashboard: React.FC<IDashboardProps > = (props) => {
   const navigate = useNavigate();
 
   useEffect(()=> {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }

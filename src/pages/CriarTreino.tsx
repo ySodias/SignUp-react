@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FormCriarTreino } from '../components/forms/FormCriarTreino';
-import { cookies } from '../providers';
 
 export type ICadastroProps = {
     nomeCliente: string
@@ -17,7 +16,7 @@ const CriarTreino: React.FC<ICadastroProps > = (
   const { nomeCliente, idCliente } = state;
 
   useEffect(()=> {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }

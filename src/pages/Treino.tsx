@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { cookies } from '../providers';
 import { TableTreino } from '../components/tables/TableTreino';
 import CSS from 'csstype';
 import { useTreino } from '../hooks/useTreino';
@@ -48,7 +47,7 @@ const Treino: React.FC<ITreinoProps> = ({
 
 
   useEffect(() => {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }
