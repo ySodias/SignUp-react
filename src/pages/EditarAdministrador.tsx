@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import { cookies } from '../providers';
 import { FormEditarAdministrador } from '../components/forms/FormEditarAdministrador';
 
 export interface IAdministradorProps {

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
 import CSS from 'csstype';
-import { cookies } from '../../providers';
 import { toast } from 'react-toastify';
 import { useAdministrador } from '../../hooks/useAdministrador';
 

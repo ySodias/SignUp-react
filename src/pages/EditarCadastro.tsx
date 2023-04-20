@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { FormCadastro } from '../components/forms/FormCadastro';
-import { cookies } from '../providers';
 import { FormEditarCadastro } from '../components/forms/FormEditarCadastro';
 
 export interface ICadastroProps {

@@ -1,7 +1,6 @@
 
 import { faArrowRightFromBracket, faArrowRightToBracket, faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { cookies } from '../../providers';
 
 
 const handleLogout = () => {

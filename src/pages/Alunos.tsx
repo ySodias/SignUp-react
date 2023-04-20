@@ -6,7 +6,7 @@ import { TableUsersAtivos } from '../components/tables/TableUsersAtivos';
 import { TableUsersInativos } from '../components/tables/TableUsersInativos';
 
 import CSS from 'csstype';
-import { cookies } from '../providers';
+
 import { useNavigate } from 'react-router-dom';
 
 export interface IPagamentosProps {}

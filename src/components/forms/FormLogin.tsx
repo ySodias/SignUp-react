@@ -6,7 +6,6 @@ import { Row, Col, Button } from 'react-bootstrap'
 import { AutenticacaoService } from "../../service/Autenticacao"
 import { AxiosError} from 'axios'
 import CSS from 'csstype';
-import { cookies } from '../../providers';
 import { ToastContainer, toast } from 'react-toastify';
 import { useAutenticacao } from '../../hooks/useAutenticacao';
 

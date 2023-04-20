@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Container, Col, Dropdown, Button } from 'react-bootstrap'
 import CSS from 'csstype';
-import { cookies } from '../providers';
 import { useNavigate } from 'react-router-dom';
 import { TableAdministrador } from '../components/tables/TableAdministradores';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

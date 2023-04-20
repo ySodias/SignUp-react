@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import { cookies } from '../providers';
 import { FormEditarTreino } from '../components/forms/FormEditarTreino';
 
 export interface ICadastroProps {

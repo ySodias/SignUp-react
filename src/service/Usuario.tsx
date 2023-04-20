@@ -1,7 +1,5 @@
-import { useNavigate } from 'react-router-dom'
 import { UsuarioParams } from '../interfaces/IUsuario'
-import { Api, cookies } from '../providers'
-import { toast } from 'react-toastify'
+import { Api } from '../providers'
 
 const getUsuario = (params: UsuarioParams) => Api
   .get("usuario", {params})

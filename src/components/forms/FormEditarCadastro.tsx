@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
 import CSS from 'csstype';
-import { cookies } from '../../providers';
 import { UsuarioService } from '../../service/Usuario';
 import { PagamentosService } from '../../service/Pagamentos';
 import { useUsuario } from '../../hooks/useUsuario';
