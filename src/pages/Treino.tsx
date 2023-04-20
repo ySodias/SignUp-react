@@ -48,7 +48,7 @@ const Treino: React.FC<ITreinoProps> = ({
 
 
   useEffect(() => {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }

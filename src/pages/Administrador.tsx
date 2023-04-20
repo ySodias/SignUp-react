@@ -26,7 +26,7 @@ const Administraodr: React.FC<IPagamentosProps > = (props) => {
   const navigate = useNavigate();
   
   useEffect(()=> {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
@@ -34,7 +34,7 @@ const Administraodr: React.FC<IPagamentosProps > = (props) => {
   }, [])
 
   function isAdmin() {
-    if(cookies.get('nivelPermissao') === '5'){
+    if(sessionStorage.getItem('nivelPermissao') === '5'){
       return true
     } else return false
   }

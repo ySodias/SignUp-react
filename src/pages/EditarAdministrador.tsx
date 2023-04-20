@@ -14,7 +14,7 @@ const EditarAdministrador: React.FC<IAdministradorProps > = ({
   const navigate = useNavigate();
   
   useEffect(()=> {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }

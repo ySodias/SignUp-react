@@ -9,6 +9,7 @@ import Loader from 'react-ts-loaders/dist';
 import { Dashboard, Home, Alunos, Cadastro, Login, Treino, CriarTreino, EditarCadastro, Administrador, CriarAdministrador, EditarAdministrador } from './AppRoutes';
 import { Footer } from './components';
 import EditarTreino from './pages/EditarTreino';
+import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
 export interface IApplicationProps {}
 const App: React.FC<IApplicationProps> = (props) => {
   return (
@@ -29,6 +30,7 @@ const App: React.FC<IApplicationProps> = (props) => {
             <Route path = '/editarTreino' element={<EditarTreino />} />
             <Route path = '/criarAdministrador' element={<CriarAdministrador />} />
             <Route path = '/editarAdministrador' element={<EditarAdministrador />} />
+            <Route path = '/politicaPrivacidade' element={<PoliticaPrivacidade />} />
           </Routes>
          </BrowserRouter>
          <Footer />

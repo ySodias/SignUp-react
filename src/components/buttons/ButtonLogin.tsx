@@ -5,11 +5,11 @@ import { cookies } from '../../providers';
 
 
 const handleLogout = () => {
-    cookies.remove('token')
+    sessionStorage.removeItem('token')
   }
 
 const ButtonLogin = () => {
-    const isLoggedIn = cookies.get('token') ? true : false;
+    const isLoggedIn = sessionStorage.getItem('token') ? true : false;
    
     return (
         <>

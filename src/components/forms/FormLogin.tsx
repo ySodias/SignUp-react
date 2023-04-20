@@ -8,6 +8,7 @@ import { AxiosError} from 'axios'
 import CSS from 'csstype';
 import { cookies } from '../../providers';
 import { ToastContainer, toast } from 'react-toastify';
+import { useAutenticacao } from '../../hooks/useAutenticacao';
 
 
 const ButtonMatricularStyle: CSS.Properties = {
@@ -29,6 +30,7 @@ export const FormLogin = () => {
   const [authenticated, setAuthenticated] = useState('');
 
   const navigate = useNavigate();
+  const { postLogin } = useAutenticacao();
 
   const autenticacaoService = AutenticacaoService
 
@@ -43,28 +45,28 @@ export const FormLogin = () => {
         password: password
     }
 
-    await autenticacaoService.postLogin(body)
+    await postLogin(body)
       .then((r)=> {
-        if (r.status == 200) {
-          cookies.set("token", r.data.token)
-          cookies.set("nivelPermissao", r.data.nivel_permissao)
-          navigate('/')
-        } else {
-          toast.error('Falha ao logar! Usuário ou senha incorreto', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            });
-        }
+        console.log(r)
+          if (r.status == 200) {
+            navigate('/')
+          } else {
+            toast.error('Falha ao logar! Usuário ou senha incorreto', {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
+          }
+        
       } 
       )
       .catch ((error: AxiosError) =>  {
-        console.log(error.response.status)
+        console.log(error)
         toast.error('Falha ao logar! Usuário ou senha incorreto', {
           position: "top-right",
           autoClose: 2000,

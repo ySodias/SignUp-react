@@ -20,7 +20,7 @@ const Alunos: React.FC<IPagamentosProps > = (props) => {
   const navigate = useNavigate();
   
   useEffect(()=> {
-    const isLogin = cookies.get('token')
+    const isLogin = sessionStorage.getItem('token')
     if (isLogin === null || isLogin === undefined) {
       navigate('/Login')
     }
