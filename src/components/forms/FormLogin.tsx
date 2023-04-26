@@ -8,6 +8,7 @@ import { AxiosError} from 'axios'
 import CSS from 'csstype';
 import { ToastContainer, toast } from 'react-toastify';
 import { useAutenticacao } from '../../hooks/useAutenticacao';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ButtonMatricularStyle: CSS.Properties = {
@@ -35,7 +36,7 @@ export const FormLogin = () => {
 
   const handleSubmit = (event: any) => {
     event?.preventDefault()
-    handleSubmitForm().catch (() =>  {
+    handleSubmitForm().catch(() =>{
       toast.warning('Falha ao logar! Usuário ou senha incorreto', {
         position: "top-right",
         autoClose: 2000,
@@ -46,7 +47,7 @@ export const FormLogin = () => {
         progress: undefined,
         theme: "colored",
         });
-  })
+    })
   }
 
   async function handleSubmitForm() {
@@ -59,21 +60,9 @@ export const FormLogin = () => {
       .then((r)=> {
           if (r.status == 200) {
             navigate('/')
-          }   
+          }
       } 
       )
-      .catch (() =>  {
-        toast.warning('Falha ao logar! Usuário ou senha incorreto', {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          });
-    })
   }
 
   return (

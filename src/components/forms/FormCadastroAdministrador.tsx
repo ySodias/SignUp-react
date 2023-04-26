@@ -5,6 +5,8 @@ import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
 import { AdministradorService } from '../../service/Adminsitrador';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
