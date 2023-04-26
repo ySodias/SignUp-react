@@ -79,7 +79,7 @@ export const FormEditarCadastro: React.FC<IFormEditarCadastroPros> = (
   const handleSubmit = () => {
     event?.preventDefault()
     handleSubmitForm().catch(() => {
-      toast.error('Erro ao Atualizar Cadastro! Revise os campos do Formulário', {
+      toast.warning('Erro ao Atualizar Cadastro! Revise os campos do Formulário', {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
