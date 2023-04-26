@@ -6,6 +6,8 @@ import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
 import { ToastContainer, toast } from 'react-toastify'
 import { useAdministrador } from '../../hooks/useAdministrador';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',

@@ -8,6 +8,8 @@ import { useUsuario } from '../../hooks/useUsuario';
 import { TreinoService } from '../../service/Treino';
 import { useTreino } from '../../hooks/useTreino';
 import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',

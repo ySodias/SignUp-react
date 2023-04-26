@@ -11,6 +11,8 @@ import { Button } from 'react-bootstrap';
 import { useUsuario } from '../../hooks/useUsuario';
 import { ToastContainer, toast } from 'react-toastify';
 import { UsuarioService } from '../../service/Usuario';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export interface ITablePagamentosPros {}
 
