@@ -94,13 +94,11 @@ export const FormEditarCadastro: React.FC<IFormEditarCadastroPros> = (
     }
     const response = await UsuarioService.putUsuario(body)
       if (response?.status === 200) {
-        const valorPagamento = defineValorPagamento()
         const bodyPagamento = {
           id: idPagamento,
           cpf_usuario: cpf,
           data_vencimento: vencimento,
-          forma_pagamento: Number(formaPagamento),
-          valor_pagamento: Number(valorPagamento)
+          forma_pagamento: Number(formaPagamento)
         }
         const responsePagamento = await PagamentosService.putPagamento(bodyPagamento)
         if (responsePagamento.status === 200) {
@@ -124,18 +122,6 @@ export const FormEditarCadastro: React.FC<IFormEditarCadastroPros> = (
   }
 
   const options = ['option1', 'option2', 'option3'];
-
-  const defineValorPagamento = () => {
-    if (Number(plano) === 1){
-      return 100
-    }
-    if (Number(plano) === 2){
-      return 85.00
-    }
-    if (Number(plano) === 3){
-      return 79.00
-    }
-  }
 
   return (
     <>

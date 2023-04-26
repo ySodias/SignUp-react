@@ -48,7 +48,7 @@ export const TableUsersInativos: React.FC<ITablePagamentosPros > = () => {
       }
       const response = await putUsuario(body)
       if (response=="update with sucess") {
-        toast.success('Matricula encerrada com Sucesso', {
+        toast.success('Matricula Ativada com Sucesso', {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
