@@ -2,12 +2,12 @@
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
 import { useUsuario } from '../../hooks/useUsuario';
 import { TreinoService } from '../../service/Treino';
 import { useTreino } from '../../hooks/useTreino';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify'
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',

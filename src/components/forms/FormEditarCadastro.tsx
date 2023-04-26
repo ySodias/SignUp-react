@@ -2,13 +2,14 @@
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
 import { UsuarioService } from '../../service/Usuario';
 import { PagamentosService } from '../../service/Pagamentos';
 import { useUsuario } from '../../hooks/useUsuario';
 import { usePagamentos } from '../../hooks/usePagamentos';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -77,7 +78,18 @@ export const FormEditarCadastro: React.FC<IFormEditarCadastroPros> = (
 
   const handleSubmit = () => {
     event?.preventDefault()
-    handleSubmitForm()
+    handleSubmitForm().catch(() => {
+      toast.error('Erro ao Atualizar Cadastro! Revise os campos do Formulário', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+    })
   }
 
   async function handleSubmitForm() {
