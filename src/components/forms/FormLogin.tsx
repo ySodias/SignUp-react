@@ -50,7 +50,7 @@ export const FormLogin = () => {
           if (r.status == 200) {
             navigate('/')
           } else {
-            toast.error('Falha ao logar! Usuário ou senha incorreto', {
+            toast.warning('Falha ao logar! Usuário ou senha incorreto', {
               position: "top-right",
               autoClose: 2000,
               hideProgressBar: false,
