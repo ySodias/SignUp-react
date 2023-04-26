@@ -2,13 +2,10 @@
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
-import { UsuarioService } from '../../service/Usuario';
-import { PagamentosService } from '../../service/Pagamentos';
 import { useUsuario } from '../../hooks/useUsuario';
-import { usePagamentos } from '../../hooks/usePagamentos';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { useTreino } from '../../hooks/useTreino';
 
 const ButtonMatricularStyle: CSS.Properties = {

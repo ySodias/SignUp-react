@@ -2,9 +2,9 @@
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
-import { Row, Col, Button, ToastContainer } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import CSS from 'csstype';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify'
 import { useAdministrador } from '../../hooks/useAdministrador';
 
 const ButtonMatricularStyle: CSS.Properties = {
