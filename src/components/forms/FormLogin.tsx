@@ -35,7 +35,18 @@ export const FormLogin = () => {
 
   const handleSubmit = (event: any) => {
     event?.preventDefault()
-    handleSubmitForm()
+    handleSubmitForm().catch (() =>  {
+      toast.warning('Falha ao logar! Usuário ou senha incorreto', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+  })
   }
 
   async function handleSubmitForm() {
@@ -46,27 +57,13 @@ export const FormLogin = () => {
 
     await postLogin(body)
       .then((r)=> {
-        console.log(r)
           if (r.status == 200) {
             navigate('/')
-          } else {
-            toast.warning('Falha ao logar! Usuário ou senha incorreto', {
-              position: "top-right",
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-              });
-          }
-        
+          }   
       } 
       )
-      .catch ((error: AxiosError) =>  {
-        console.log(error)
-        toast.error('Falha ao logar! Usuário ou senha incorreto', {
+      .catch (() =>  {
+        toast.warning('Falha ao logar! Usuário ou senha incorreto', {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
