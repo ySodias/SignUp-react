@@ -6,7 +6,8 @@ import CSS from 'csstype';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { link } from '../utils/link';
 import { useModal } from '../hooks/useModal';
-import { Share } from './modal';
+import { pdfGenerate } from '../service/utils';
+
 
 export type BodyHomePros = {}
 
@@ -34,11 +35,7 @@ const BorderStyleShare: CSS.Properties = {
 
 const message = `https://api.whatsapp.com/send?phone=+551998769-3143&text=${link['localizacao']}`
 
-console.log(message)
-
 export const BodyHome: React.FC<BodyHomePros> = () => {
-  const { isShow, setIsShow,toggle } = useModal();
- 
 
   return(
     <div>
@@ -68,12 +65,6 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
           <Col className="p-3">
             <div className="d-flex align-items-center justify-content-between">
             <h2 style={H2FontStyle}>Localização</h2>
-            <Button onClick={toggle} variant="link" className='d-flex text-dark text-decoration-none px-4'>
-           <div className="d-flex border p-1 align-items-center" style={BorderStyleShare}>
-              <FontAwesomeIcon  icon={faShareAlt} />
-              </div><span className='px-1'>Compartilhar</span>  
-            </Button>
-            <Share show={isShow}/>
             </div>
           <iframe src={link['localizacao']}
             width="600" height="378" allowFullScreen="" referrerPolicy="no-referrer-when-downgrade"></iframe>

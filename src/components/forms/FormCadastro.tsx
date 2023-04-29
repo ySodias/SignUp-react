@@ -7,6 +7,7 @@ import CSS from 'csstype';
 import { PagamentosService } from '../../service/Pagamentos';
 import { useUsuario } from '../../hooks/useUsuario';
 import { usePagamentos } from '../../hooks/usePagamentos';
+import { pdfGenerate } from '../../service/utils';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -64,6 +65,16 @@ export const FormCadastro = () => {
         }
         postPagamentoUsuario(bodyPagamento).then((responsePagamento)=>{
           if (responsePagamento === 201) {
+            let dataAtual = new Date();
+            let dia = dataAtual.getDate();
+            let mes = dataAtual.getMonth() + 1;
+            let ano = dataAtual.getFullYear();
+            const body = {
+              nomeAluno: username,
+              dataInicio: `${dia}/${mes}/${ano}`,
+              valorMensalidade: String(valorPagamento)
+            }
+            pdfGenerate(body)
             navigate('/Alunos')
           }
         })
