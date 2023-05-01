@@ -41,3 +41,7 @@ button.p-3.exalunos{
 .dropdown-item:focus {
 background-color: #fb6dba !important;
 }
+
+.rag-red-outer {
+  background-color: #eb5b62 !important;
+}

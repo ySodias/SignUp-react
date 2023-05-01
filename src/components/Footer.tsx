@@ -44,6 +44,7 @@ export function Footer (){
         <dt><a className='text-decoration-none'>Serviços</a></dt>
         <dd><a className='text-decoration-none' href='/Dashboard'>Relatórios</a></dd>
         <dd><a className='text-decoration-none' href='/Alunos'>Alunos</a></dd>
+        <dd><a className='text-decoration-none' href='/Alunos'>Treinos</a></dd>
         <dd><a className='text-decoration-none' href='/Cadastro'>Cadastro</a></dd>
         <dd><a className='text-decoration-none' href='/Administrador'>Administrador</a></dd>
         </dl>
