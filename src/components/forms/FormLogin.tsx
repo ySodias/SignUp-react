@@ -32,8 +32,6 @@ export const FormLogin = () => {
   const navigate = useNavigate();
   const { postLogin } = useAutenticacao();
 
-  const autenticacaoService = AutenticacaoService
-
   const handleSubmit = (event: any) => {
     event?.preventDefault()
     handleSubmitForm().catch(() =>{

@@ -56,6 +56,10 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
     })
   },[])
 
+  const handleButtonIrParaTreino = () => {
+      let selectedRows = onSelectionChanged()
+      navigate('/Treino', {state: {id: selectedRows[0].id}})
+  }
 
   const handleButtonEditar = () => {
     navigate('/EditarCadastro', {state: {
@@ -136,6 +140,12 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
     })
   }
 
+  const buttonTreino = () => {
+    return (
+      <Button variant='secondary' style={SizeButtonEncerrarStyle} onClick={handleButtonIrParaTreino}>Ir para Treino</Button>
+    )
+  }
+
   const buttonPagar = () => {
     return (
       <Button variant='success' style={SizeButtonStyle} onClick={handleButtonPagar}>Pagar</Button>
@@ -170,6 +180,9 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
       },
       {  field: '',
       cellRenderer: buttonEncerrar, width: 150, minWidth: 150
+      },
+      {  field: '',
+      cellRenderer: buttonTreino, width: 150, minWidth: 150
       }
     ], 
       onSelectionChanged: onSelectionChanged,
@@ -179,9 +192,14 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
           let selectedRows = onSelectionChanged()
           navigate('/Treino', {state: {id: selectedRows[0].id}})
         }
-      },
-
+      }
   }
+
+  const rowClassRules =  {
+    'rag-red-outer': function(params) {
+      return params.data.status_matricula === 'PENDENTE'
+    }
+}
 
   const defaultColDef = useMemo<ColDef>(() => {
     return {
@@ -204,7 +222,8 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
           modules={AllCommunityModules}
           defaultColDef={defaultColDef}
           rowData={rowData}
-          gridOptions={gridOptions}>
+          gridOptions={gridOptions}
+          rowClassRules={rowClassRules}>
       </AgGridReact>
       <ToastContainer />
   </div>
