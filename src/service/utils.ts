@@ -22,6 +22,8 @@ export const pdfGenerate = (keyword: IMatricula) => {
     })
 }
 
+
+
 export const generateText = (keyword: IMatricula) => {
     return `
     <div class="pos" id="_0:0" style="top:0">

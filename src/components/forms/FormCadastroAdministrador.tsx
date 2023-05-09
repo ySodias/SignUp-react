@@ -115,13 +115,13 @@ export const FormCadastroAdministrador = () => {
     <div className='d-flex justify-content-center p-3'>
         <div className='p-3'>
           <Button onClick={() => navigate('/')}
-            style={ButtonCancelarStyle}
+            variant="danger"
              type="submit">
               Cancelar
           </Button></div>
         <div className='p-3'>
           <Button 
-            style={ButtonMatricularStyle} type="submit" onClick={handleSubmit}> 
+            variant="success" type="submit" onClick={handleSubmit}> 
               Cadastrar
           </Button>
         </div>

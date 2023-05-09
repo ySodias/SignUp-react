@@ -47,6 +47,9 @@ const Alunos: React.FC<IPagamentosProps > = (props) => {
   return (
     <>
     <Container>
+    <div className='d-flex justify-content-center pt-5'>
+        <h1>Alunos</h1>
+      </div>
       <Row className="p-5">
         <Col>
         <Button variant="outline-dark" 

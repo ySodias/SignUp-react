@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { TableTreino } from '../components/tables/TableTreino';
 import CSS from 'csstype';
 import { useTreino } from '../hooks/useTreino';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useUsuario } from '../hooks/useUsuario';
 export type ITreinoProps = {
@@ -81,6 +81,10 @@ const Treino: React.FC<ITreinoProps> = ({
   }
   }
 
+  function handlePdf(){
+    console.log(rowData)
+  }
+
   function handlerGrid() {
     if (rowData !== undefined) {
       return (
@@ -89,6 +93,8 @@ const Treino: React.FC<ITreinoProps> = ({
           <h1>Plano Semanal {usuario[0].nome_cliente}
           <Button variant="link" className="px-3" onClick={navigateToCriarTreino}>
             <FontAwesomeIcon className="pb-2" style={FontStyle} icon={faPenToSquare}></FontAwesomeIcon></Button>
+            <Button variant="link" className="px-3" onClick={handlePdf}>
+            <FontAwesomeIcon className="pb-2" style={FontStyle} icon={faDownload}></FontAwesomeIcon></Button>
           </h1>
           </div>
         <Row className='p-5'>

@@ -167,8 +167,6 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
   const gridOptions = {
     columnDefs :[
       { headerName: "Nome", field: "nome", filter: true, width: 200, minWidth: 170},
-      { headerName: "Cadastrado em", field: "cadastrado_em", width: 150, minWidth: 90 },
-      { headerName: "Status Mensalidade", filter: true, field: "status_matricula", width: 200, minWidth: 170 },
       { headerName: "Ultima Mensalidade Paga", field: "ultima_mensalidade_paga", width: 200, minWidth: 170 },
       { headerName: "Vencimento da Mensalidade", field: "vencimento_mensalidade", width: 200, minWidth: 170 },
       { headerName: "Valor", field: "valor", width: 200, minWidth: 170 },
@@ -180,9 +178,6 @@ export const TableUsersAtivos: React.FC<ITablePagamentosPros > = () => {
       },
       {  field: '',
       cellRenderer: buttonEncerrar, width: 150, minWidth: 150
-      },
-      {  field: '',
-      cellRenderer: buttonTreino, width: 150, minWidth: 150
       }
     ], 
       onSelectionChanged: onSelectionChanged,

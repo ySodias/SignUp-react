@@ -54,7 +54,6 @@ export const FormCadastro = () => {
       plano: Number(plano)
     }
     postUsuario(body).then((response)=>{
-      console.log(response)
       if (response.status === 201) {
         const valorPagamento = Number(plano) == 1 ? 100 : (Number(plano) == 2 ? 85.00 : 79.00)
         const bodyPagamento = {
@@ -156,13 +155,13 @@ export const FormCadastro = () => {
             <div className='d-flex justify-content-center p-3'>
                 <div className='p-3'>
                   <Button onClick={() => navigate('/')}
-                    style={ButtonCancelarStyle}
+                    variant="danger"
                      type="submit">
                       Cancelar
                   </Button></div>
                 <div className='p-3'>
                   <Button 
-                    style={ButtonMatricularStyle} type="submit" onClick={handleSubmit}> 
+                    variant="success" type="submit" onClick={handleSubmit}> 
                       Matricular
                   </Button>
                 </div>
