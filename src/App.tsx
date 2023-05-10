@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 import { Route } from "react-router";
 import { BrowserRouter, Routes } from 'react-router-dom';
 import Loader from 'react-ts-loaders/dist';
-import { Dashboard, Home, Alunos, Cadastro, Login, Treino, CriarTreino, EditarCadastro, Administrador, CriarAdministrador, EditarAdministrador } from './AppRoutes';
+import { Dashboard, Home, Alunos, AlunosTreinos, Cadastro, Login, Treino, CriarTreino, EditarCadastro, Administrador, CriarAdministrador, EditarAdministrador } from './AppRoutes';
 import { Footer } from './components';
 import EditarTreino from './pages/EditarTreino';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
@@ -31,6 +31,7 @@ const App: React.FC<IApplicationProps> = (props) => {
             <Route path = '/criarAdministrador' element={<CriarAdministrador />} />
             <Route path = '/editarAdministrador' element={<EditarAdministrador />} />
             <Route path = '/politicaPrivacidade' element={<PoliticaPrivacidade />} />
+            <Route path = '/alunosTreinos' element={<AlunosTreinos />} />
           </Routes>
          </BrowserRouter>
          <Footer />

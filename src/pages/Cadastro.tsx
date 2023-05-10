@@ -20,7 +20,7 @@ const Cadastro: React.FC<ICadastroProps > = () => {
     <>
     <Container>
       <div className='d-flex justify-content-center p-5'>
-        <h1>Cadastro</h1>
+        <h1>Matricula</h1>
       </div>
       <Row >
         <Col>

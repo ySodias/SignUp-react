@@ -8,6 +8,7 @@ import { useUsuario } from '../../hooks/useUsuario';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTreino } from '../../hooks/useTreino';
 import 'react-toastify/dist/ReactToastify.css';
+import { checkCPF, checkInteger, checkString } from '../../service/utils';
 
 
 const ButtonMatricularStyle: CSS.Properties = {
@@ -73,6 +74,22 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
     })
     }, [])
 
+    const checkValidForm = (cpfUsuario: String, 
+      nomeExercicio: String, 
+      series: String | Number, 
+      repeticoes: String | Number, 
+      frequencia: String | Number, 
+      dataFim: String, 
+      carga: String | Number) => {
+      return (!!dataFim && !!checkInteger(carga) 
+      && !!checkInteger(frequencia) 
+      && !!checkInteger(repeticoes) 
+      && !!checkInteger(series)
+      && !!checkString(nomeExercicio) 
+      && checkCPF(cpfUsuario))
+    }
+
+  const isValid = checkValidForm(cpfUsuario, nomeExercicio, series, repeticoes, frequencia, dataFim, carga)
 
   const handleSubmit = () => {
     event?.preventDefault()
@@ -129,7 +146,7 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
                 <Col>
                 <Form.Group className="mb-3" controlId="formCPF">
                   <Form.Label>Repetições <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Vezes que se repetirá"
+                  <Form.Control type="number" min="0" placeholder="Vezes que se repetirá"
                    defaultValue={repeticoes}
                   onChange={(e) => setRepeticoes(e.target.value)} />
                 </Form.Group>
@@ -137,7 +154,7 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
                 <Col>
                 <Form.Group className="mb-3" controlId="formRG">
                   <Form.Label>Carga <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Insira o Peso" 
+                  <Form.Control type="number" min="0" placeholder="Insira o Peso" 
                    defaultValue={carga}
                   onChange={(e) => setCarga(e.target.value)} />
                 </Form.Group>
@@ -147,7 +164,7 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
               <Col>
               <Form.Group className="mb-3" controlId="formFrequencia">
                   <Form.Label>Frequência <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Insira a quantidade de dias na semana" 
+                  <Form.Control type="number" min="0" placeholder="Insira a quantidade de dias na semana" 
                   defaultValue={frequencia}
                   onChange={(e) => setFrequencia(e.target.value)} />
                 </Form.Group>
@@ -155,7 +172,7 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
               <Col>
               <Form.Group className="mb-3" controlId="formSeries">
                   <Form.Label>Series <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Insira a quantidade de series" 
+                  <Form.Control type="number" min="0" placeholder="Insira a quantidade de series" 
                   defaultValue={series}
                   onChange={(e) => setSeries(e.target.value)} />
                 </Form.Group>
@@ -172,13 +189,13 @@ export const FormEditarTreino: React.FC<IFormEditarTreinoPros> = (
             <div className='d-flex justify-content-center p-3'>
                 <div className='p-3'>
                   <Button onClick={() => navigate('/')}
-                    style={ButtonCancelarStyle}
+                    variant="danger"
                      type="submit">
                       Cancelar
                   </Button></div>
                 <div className='p-3'>
                   <Button 
-                    style={ButtonMatricularStyle} type="submit" onClick={handleSubmit}> 
+                    variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
                       Salvar
                   </Button>
                 </div>

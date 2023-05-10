@@ -7,7 +7,7 @@ import CSS from 'csstype';
 import { PagamentosService } from '../../service/Pagamentos';
 import { useUsuario } from '../../hooks/useUsuario';
 import { usePagamentos } from '../../hooks/usePagamentos';
-import { pdfGenerate } from '../../service/utils';
+import { checkCPF, checkInteger, checkString, pdfGenerate } from '../../service/utils';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -42,6 +42,34 @@ export const FormCadastro = () => {
     handleSubmitForm()
   }
 
+  const checkValidForm = (username: String, 
+    cpf: String, 
+    dataNascimento: String, 
+    endereco: String, 
+    formaPagamento: String | Number, 
+    telefone: String, 
+    plano: String | Number,
+    vencimento: String, 
+    ) => {
+    return (!!dataNascimento && !!vencimento
+    && !!checkInteger(plano) 
+    && !!checkString(telefone) 
+    && !!checkInteger(formaPagamento)
+    && !!checkString(endereco) 
+    && !!checkString(username)
+    && checkCPF(cpf))
+  }
+
+const isValid = checkValidForm(username, 
+                                cpf, 
+                                dataNascimento, 
+                                endereco, 
+                                formaPagamento, 
+                                telefone, 
+                                plano,
+                                vencimento)
+
+
   async function handleSubmitForm() {
     const body = {
       cpf: cpf,
@@ -54,7 +82,6 @@ export const FormCadastro = () => {
       plano: Number(plano)
     }
     postUsuario(body).then((response)=>{
-      console.log(response)
       if (response.status === 201) {
         const valorPagamento = Number(plano) == 1 ? 100 : (Number(plano) == 2 ? 85.00 : 79.00)
         const bodyPagamento = {
@@ -156,13 +183,13 @@ export const FormCadastro = () => {
             <div className='d-flex justify-content-center p-3'>
                 <div className='p-3'>
                   <Button onClick={() => navigate('/')}
-                    style={ButtonCancelarStyle}
+                    variant="danger"
                      type="submit">
                       Cancelar
                   </Button></div>
                 <div className='p-3'>
                   <Button 
-                    style={ButtonMatricularStyle} type="submit" onClick={handleSubmit}> 
+                    variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
                       Matricular
                   </Button>
                 </div>

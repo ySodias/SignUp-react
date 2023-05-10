@@ -48,6 +48,14 @@ export const FormLogin = () => {
     })
   }
 
+  const checkValidForm = (password: String, 
+    email_adress: String, 
+    ) => {
+    return !!checkString(password) && !!checkString(email_adress) 
+  }
+
+const isValid = checkValidForm(password, email_adress)
+
   async function handleSubmitForm() {
     let body = {
         email: email_adress,
@@ -83,13 +91,13 @@ export const FormLogin = () => {
         <div className='d-flex justify-content-center p-3'>
             <div className='p-3'>
               <Button onClick={() => navigate('/')}
-                style={ButtonCancelarStyle}
+                variant="danger"
                 type="submit">
                   Cancelar
               </Button></div>
             <div className='p-3'>
               <Button 
-                style={ButtonMatricularStyle} type="submit" onClick={handleSubmit}> 
+                variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
                   Login
               </Button>
             </div>

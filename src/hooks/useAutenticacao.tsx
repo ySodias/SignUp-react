@@ -13,6 +13,7 @@ export const useAutenticacao = () => {
     setFuncionario(data);
     sessionStorage.setItem("token", data.token)
     sessionStorage.setItem("nivelPermissao", data.nivel_permissao)
+    sessionStorage.setItem("nome", data.nome)
     return {status: status, data: data}
   }, []);
 

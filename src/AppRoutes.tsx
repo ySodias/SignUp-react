@@ -4,7 +4,7 @@ import React from 'react';
 export const Home = React.lazy(() => {
   return Promise.all([
     import('./pages/Home'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -12,7 +12,7 @@ export const Home = React.lazy(() => {
 export const Dashboard = React.lazy(() => {
   return Promise.all([
     import('./pages/Dashboard'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -20,7 +20,7 @@ export const Dashboard = React.lazy(() => {
 export const Alunos = React.lazy(() => {
   return Promise.all([
     import('./pages/Alunos'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -28,7 +28,7 @@ export const Alunos = React.lazy(() => {
 export const Cadastro = React.lazy(() => {
   return Promise.all([
     import('./pages/Cadastro'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -36,7 +36,7 @@ export const Cadastro = React.lazy(() => {
 export const Login = React.lazy(() => {
   return Promise.all([
     import('./pages/Login'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -44,7 +44,7 @@ export const Login = React.lazy(() => {
 export const Treino = React.lazy(() => {
   return Promise.all([
     import('./pages/Treino'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -52,7 +52,7 @@ export const Treino = React.lazy(() => {
 export const CriarTreino = React.lazy(() => {
   return Promise.all([
     import('./pages/CriarTreino'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -60,7 +60,7 @@ export const CriarTreino = React.lazy(() => {
 export const EditarCadastro = React.lazy(() => {
   return Promise.all([
     import('./pages/EditarCadastro'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -68,7 +68,7 @@ export const EditarCadastro = React.lazy(() => {
 export const Administrador = React.lazy(() => {
   return Promise.all([
     import('./pages/Administrador'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -76,7 +76,7 @@ export const Administrador = React.lazy(() => {
 export const EditarTreino = React.lazy(() => {
   return Promise.all([
     import('./pages/EditarTreino'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -84,7 +84,7 @@ export const EditarTreino = React.lazy(() => {
 export const CriarAdministrador = React.lazy(() => {
   return Promise.all([
     import('./pages/CriarAdministrador'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
@@ -92,7 +92,15 @@ export const CriarAdministrador = React.lazy(() => {
 export const EditarAdministrador = React.lazy(() => {
   return Promise.all([
     import('./pages/EditarAdministrador'),
-    new Promise(resolve => setTimeout(resolve, 700))
+    new Promise(resolve => setTimeout(resolve, 1000))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});
+
+export const AlunosTreinos = React.lazy(() => {
+  return Promise.all([
+    import('./pages/AlunosTreinos'),
+    new Promise(resolve => setTimeout(resolve, 1000))
   ])
   .then(([moduleExports]) => moduleExports);
 });
