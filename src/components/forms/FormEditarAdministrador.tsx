@@ -7,7 +7,7 @@ import CSS from 'csstype';
 import { ToastContainer, toast } from 'react-toastify'
 import { useAdministrador } from '../../hooks/useAdministrador';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { checkInteger, checkString } from '../../service/utils';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -66,6 +66,31 @@ export const FormEditarAdministrador: React.FC<IFormEditarAdministradorPros> = (
     event?.preventDefault()
     handleSubmitForm()
   }
+
+  const checkValidForm = (username: String, 
+    senha: String, 
+    dataNascimento: String, 
+    endereco: String, 
+    email: String, 
+    telefone: String, 
+    nivelPermissao: String | Number,
+    ) => {
+    return (!!dataNascimento
+    && !!checkString(senha) 
+    && !!checkString(email) 
+    && !!checkString(endereco) 
+    && !!checkString(username)
+    && !!checkString(telefone)
+    && checkInteger(nivelPermissao))
+  }
+
+const isValid = checkValidForm(nome,
+  senha, 
+  dataNascimento, 
+  endereco, 
+  email, 
+  telefone, 
+  nivelPermissao)
 
   async function handleSubmitForm() {
     const body = {
@@ -191,7 +216,7 @@ export const FormEditarAdministrador: React.FC<IFormEditarAdministradorPros> = (
                   </Button></div>
                 <div className='p-3'>
                   <Button 
-                   variant="success" type="submit" onClick={handleSubmit}> 
+                   variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
                       Salvar
                   </Button>
                 </div>

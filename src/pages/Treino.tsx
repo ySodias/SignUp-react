@@ -8,6 +8,7 @@ import { useTreino } from '../hooks/useTreino';
 import { faDownload, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useUsuario } from '../hooks/useUsuario';
+import { pdfGridGenerate } from '../service/utils';
 export type ITreinoProps = {
   id: Number
 }
@@ -83,6 +84,7 @@ const Treino: React.FC<ITreinoProps> = ({
 
   function handlePdf(){
     console.log(rowData)
+    pdfGridGenerate(rowData)
   }
 
   function handlerGrid() {

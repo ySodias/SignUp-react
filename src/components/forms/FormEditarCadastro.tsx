@@ -10,6 +10,7 @@ import { useUsuario } from '../../hooks/useUsuario';
 import { usePagamentos } from '../../hooks/usePagamentos';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { checkCPF, checkInteger, checkString, pdfGenerate } from '../../service/utils';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -91,6 +92,33 @@ export const FormEditarCadastro: React.FC<IFormEditarCadastroPros> = (
         });
     })
   }
+
+  const checkValidForm = (username: String, 
+    cpf: String, 
+    dataNascimento: String, 
+    endereco: String, 
+    formaPagamento: String | Number, 
+    telefone: String, 
+    plano: String | Number,
+    vencimento: String, 
+    ) => {
+    return (!!dataNascimento && !!vencimento
+    && !!checkInteger(plano) 
+    && !!checkString(telefone) 
+    && !!checkInteger(formaPagamento)
+    && !!checkString(endereco) 
+    && !!checkString(username)
+    && checkCPF(cpf))
+  }
+
+const isValid = checkValidForm(username, 
+                                cpf, 
+                                dataNascimento, 
+                                endereco, 
+                                formaPagamento, 
+                                telefone, 
+                                plano,
+                                vencimento)
 
   async function handleSubmitForm() {
     const body = {
@@ -208,7 +236,7 @@ export const FormEditarCadastro: React.FC<IFormEditarCadastroPros> = (
                   </Button></div>
                 <div className='p-3'>
                   <Button 
-                    variant="success" type="submit" onClick={handleSubmit}> 
+                    variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
                       Salvar
                   </Button>
                 </div>

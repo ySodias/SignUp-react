@@ -9,7 +9,7 @@ import { TreinoService } from '../../service/Treino';
 import { useTreino } from '../../hooks/useTreino';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-
+import { checkCPF, checkInteger, checkString } from '../../service/utils';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -41,7 +41,7 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
         const response = await getUsuario({id: data.idCliente});
         return response;
     }
-
+    const [id, setId] = useState()
     const [cpf, setCPF] = useState();
     const [exercicio, setExercicio] = useState('');
     const [repeticoes, setRepeticoes] = useState('');
@@ -79,13 +79,30 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
               });
             setTimeout(() => 
             {
-              navigate('/Alunos')
+              navigate('/Treino', {state: {id: id}})
             },
             2500);
           }
           }
           )
     }
+
+    const checkValidForm = (cpfUsuario: String, 
+      nomeExercicio: String, 
+      series: String | Number, 
+      repeticoes: String | Number, 
+      frequencia: String | Number, 
+      dataFim: String, 
+      carga: String | Number) => {
+      return (!!dataFim && !!checkInteger(carga) 
+      && !!checkInteger(frequencia) 
+      && !!checkInteger(repeticoes) 
+      && !!checkInteger(series)
+      && !!checkString(nomeExercicio) 
+      && checkCPF(cpfUsuario))
+    }
+
+  const isValid = checkValidForm(cpf, exercicio, series, repeticoes, frequencia, fim, carga)
 
     useEffect(() => {
         const isLogin = sessionStorage.getItem('token')
@@ -97,7 +114,7 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
         .then((rowData) => {
           setRowData(rowData)
           setCPF(rowData[0][0].cpf)
-          console.log(rowData[0][0])
+          setId(rowData[0][0].id)
         })
         console.log()
         handlerForm()
@@ -121,14 +138,14 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
                 <Col>
                 <Form.Group className="mb-3" controlId="formCPF">
                   <Form.Label>Repetições <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Vezes que se repetirá"
+                  <Form.Control type="number" min="0" placeholder="Vezes que se repetirá"
                   onChange={(e) => setRepeticoes(e.target.value)} />
                 </Form.Group>
                 </Col>
                 <Col>
                 <Form.Group className="mb-3" controlId="formRG">
                   <Form.Label>Carga <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Insira o Peso" 
+                  <Form.Control type="number" min="0" placeholder="Insira o Peso" 
                   onChange={(e) => setCarga(e.target.value)} />
                 </Form.Group>
                 </Col>
@@ -137,14 +154,14 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
               <Col>
               <Form.Group className="mb-3" controlId="formFrequencia">
                   <Form.Label>Frequência <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Insira a quantidade de dias na semana" 
+                  <Form.Control type="number" min="0" placeholder="Insira a quantidade de dias na semana" 
                   onChange={(e) => setFrequencia(e.target.value)} />
                 </Form.Group>
               </Col>
               <Col>
               <Form.Group className="mb-3" controlId="formSeries">
                   <Form.Label>Series <span className="obrigatorio">*</span></Form.Label>
-                  <Form.Control type="number" placeholder="Insira a quantidade de dias na semana" 
+                  <Form.Control type="number" min="0" placeholder="Insira a quantidade de dias na semana" 
                   onChange={(e) => setSeries(e.target.value)} />
                 </Form.Group>
               </Col>
@@ -165,8 +182,8 @@ export const FormCriarTreino: React.FC<IFormCriarTreinoPros> = (
                   </Button></div>
                 <div className='p-3'>
                   <Button 
-                    variant="success" type="submit" onClick={handleSubmit}> 
-                      Confirmar
+                    variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
+                      Criar
                   </Button>
                 </div>
             </div>

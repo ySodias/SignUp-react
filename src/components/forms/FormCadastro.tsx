@@ -7,7 +7,7 @@ import CSS from 'csstype';
 import { PagamentosService } from '../../service/Pagamentos';
 import { useUsuario } from '../../hooks/useUsuario';
 import { usePagamentos } from '../../hooks/usePagamentos';
-import { pdfGenerate } from '../../service/utils';
+import { checkCPF, checkInteger, checkString, pdfGenerate } from '../../service/utils';
 
 const ButtonMatricularStyle: CSS.Properties = {
   color: '#FAFAFA',
@@ -41,6 +41,34 @@ export const FormCadastro = () => {
     event?.preventDefault()
     handleSubmitForm()
   }
+
+  const checkValidForm = (username: String, 
+    cpf: String, 
+    dataNascimento: String, 
+    endereco: String, 
+    formaPagamento: String | Number, 
+    telefone: String, 
+    plano: String | Number,
+    vencimento: String, 
+    ) => {
+    return (!!dataNascimento && !!vencimento
+    && !!checkInteger(plano) 
+    && !!checkString(telefone) 
+    && !!checkInteger(formaPagamento)
+    && !!checkString(endereco) 
+    && !!checkString(username)
+    && checkCPF(cpf))
+  }
+
+const isValid = checkValidForm(username, 
+                                cpf, 
+                                dataNascimento, 
+                                endereco, 
+                                formaPagamento, 
+                                telefone, 
+                                plano,
+                                vencimento)
+
 
   async function handleSubmitForm() {
     const body = {
@@ -161,7 +189,7 @@ export const FormCadastro = () => {
                   </Button></div>
                 <div className='p-3'>
                   <Button 
-                    variant="success" type="submit" onClick={handleSubmit}> 
+                    variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
                       Matricular
                   </Button>
                 </div>

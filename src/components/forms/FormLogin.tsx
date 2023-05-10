@@ -48,6 +48,14 @@ export const FormLogin = () => {
     })
   }
 
+  const checkValidForm = (password: String, 
+    email_adress: String, 
+    ) => {
+    return !!checkString(password) && !!checkString(email_adress) 
+  }
+
+const isValid = checkValidForm(password, email_adress)
+
   async function handleSubmitForm() {
     let body = {
         email: email_adress,
@@ -89,7 +97,7 @@ export const FormLogin = () => {
               </Button></div>
             <div className='p-3'>
               <Button 
-                variant="success" type="submit" onClick={handleSubmit}> 
+                variant="success" type="submit" onClick={handleSubmit} disabled={!isValid}> 
                   Login
               </Button>
             </div>
