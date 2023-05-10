@@ -17,7 +17,7 @@ const Login: React.FC<ILoginProps > = () => {
           <FormLogin />
         </Col>
         <Col>
-        <img src="../../src/assets/gifts/signup.gif" 
+        <img src="https://raw.githubusercontent.com/ySodias/SignUp-react/main/src/assets/gifts/signup.gif" 
                 width="80%" height="80%"></img>
         </Col>
       </Row>

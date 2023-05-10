@@ -30,7 +30,7 @@ const EditarTreino: React.FC<ICadastroProps > = ({
           <FormEditarTreino />
         </Col>
         <Col className='px-5'>
-        <img src="../../src/assets/gifts/treino.gif" 
+        <img src="https://raw.githubusercontent.com/ySodias/SignUp-react/main/src/assets/gifts/treino.gif" 
                 width="80%" height="80%"></img>
         </Col>
       </Row>
