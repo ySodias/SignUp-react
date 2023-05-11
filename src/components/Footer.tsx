@@ -42,10 +42,10 @@ export function Footer (){
         </dl>
         <dl className='text-decoration-none p-3 pb-0 mb-0'>
         <dt><a className='text-decoration-none'>Serviços</a></dt>
-        <dd><a className='text-decoration-none' href='/Dashboard'>Relatórios</a></dd>
+        <dd><a className='text-decoration-none' href='/Cadastro'>Matricula</a></dd>
         <dd><a className='text-decoration-none' href='/Alunos'>Alunos</a></dd>
-        <dd><a className='text-decoration-none' href='/Alunos'>Treinos</a></dd>
-        <dd><a className='text-decoration-none' href='/Cadastro'>Cadastro</a></dd>
+        <dd><a className='text-decoration-none' href='/Treinos'>Treinos</a></dd>
+        <dd><a className='text-decoration-none' href='/Dashboard'>Relatórios</a></dd>
         <dd><a className='text-decoration-none' href='/Administrador'>Administrador</a></dd>
         </dl>
         <dl className='p-3 pb-0 mb-0'>
@@ -54,11 +54,11 @@ export function Footer (){
         <dd>BYB Consultoria: 123-456-7890</dd>
         </dl>
         </Col>
-      <Col className="d-flex p-3 justify-content-left pb-0 mb-0">  
+        <Col className="d-flex p-3 justify-content-left pb-0 mb-0">  
           <dl>
           <dt><a className='p-2 text-decoration-none pb-0 mb-0'>Social</a></dt>
-          <dd><a href='' className="px-3 text-decoration-none"><FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon></a>
-          <a href='' className="px-3 text-decoration-none"><FontAwesomeIcon  icon={faInstagram}></FontAwesomeIcon></a>
+          <dd><a href='https://www.facebook.com/olimpiaacademiacps' target='_blank' className="px-3 text-decoration-none"><FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon></a>
+          <a href='https://www.instagram.com/bem_estar_fitness/' target='_blank' className="px-3 text-decoration-none"><FontAwesomeIcon  icon={faInstagram}></FontAwesomeIcon></a>
           <a href='' className="px-3 text-decoration-none"><FontAwesomeIcon  icon={faWhatsapp}></FontAwesomeIcon></a></dd>
           </dl>
       </Col>
@@ -73,9 +73,10 @@ export function Footer (){
         </dl>
         <dl className='text-decoration-none p-3 pb-0 mb-0'>
         <dt><a className='text-decoration-none'>Serviços</a></dt>
-        <dd><a className='text-decoration-none' href='/Dashboard'>Relatórios</a></dd>
+        <dd><a className='text-decoration-none' href='/Cadastro'>Matricula</a></dd>
         <dd><a className='text-decoration-none' href='/Alunos'>Alunos</a></dd>
-        <dd><a className='text-decoration-none' href='/Cadastro'>Cadastro</a></dd>
+        <dd><a className='text-decoration-none' href='/Treinos'>Treinos</a></dd>
+        <dd><a className='text-decoration-none' href='/Dashboard'>Relatórios</a></dd>
         <dd><a className='text-decoration-none' href='/Administrador'>Administrador</a></dd>
         </dl>
         <dl className='p-3 pb-0 mb-0'>
@@ -87,8 +88,8 @@ export function Footer (){
         <Col className="d-flex p-3 justify-content-left pb-0 mb-0">  
           <dl>
           <dt><a className='p-2 text-decoration-none pb-0 mb-0'>Social</a></dt>
-          <dd><a href='' className="px-3 text-decoration-none"><FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon></a>
-          <a href='' className="px-3 text-decoration-none"><FontAwesomeIcon  icon={faInstagram}></FontAwesomeIcon></a>
+          <dd><a href='https://www.facebook.com/olimpiaacademiacps' target='_blank' className="px-3 text-decoration-none"><FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon></a>
+          <a href='https://www.instagram.com/bem_estar_fitness/' target='_blank' className="px-3 text-decoration-none"><FontAwesomeIcon  icon={faInstagram}></FontAwesomeIcon></a>
           <a href='' className="px-3 text-decoration-none"><FontAwesomeIcon  icon={faWhatsapp}></FontAwesomeIcon></a></dd>
           </dl>
       </Col>

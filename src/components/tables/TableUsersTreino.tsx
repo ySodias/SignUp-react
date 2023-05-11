@@ -54,7 +54,7 @@ export const TableUsersTreino: React.FC<ITablePagamentosPros > = () => {
   
   const buttonTreino = () => {
     return (
-      <Button variant='secondary' style={SizeButtonEncerrarStyle} onClick={handleButtonIrParaTreino}>Ir para Treino</Button>
+      <Button variant='warning' style={SizeButtonEncerrarStyle} onClick={handleButtonIrParaTreino}>Ir para Treino</Button>
     )
   }
 
