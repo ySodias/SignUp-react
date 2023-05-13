@@ -57,7 +57,7 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
       </Row>
       <Container>
       <Row  className="p-4 mt-5 mb-5 m-4 border" style={BorderStyle}>
-      <a href='/Planos'>      <img src="../../src/assets/img/planos.png" 
+      <a href='/Planos'>      <img src="https://raw.githubusercontent.com/ySodias/SignUp-react/main/src/assets/img/carroselExercicio.png" 
                   width="100%" height="100%" ></img></a>
 
       </Row>
