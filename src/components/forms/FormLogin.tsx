@@ -63,6 +63,10 @@ const isValid = checkValidForm(password, email_adress)
     await postLogin(body)
       .then((r)=> {
           if (r.status == 200) {
+            console.log(r)
+            sessionStorage.setItem("token", r.data.token)
+            sessionStorage.setItem("nivelPermissao", r.data.nivel_permissao)
+            sessionStorage.setItem("nome", r.data.nome)
             navigate('/')
           }
       } 

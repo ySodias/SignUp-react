@@ -11,9 +11,6 @@ export const useAutenticacao = () => {
     const { status, data } = await AutenticacaoService.postLogin(body);
     if (status != 200) throw new Error();
     setFuncionario(data);
-    sessionStorage.setItem("token", data.token)
-    sessionStorage.setItem("nivelPermissao", data.nivel_permissao)
-    sessionStorage.setItem("nome", data.nome)
     return {status: status, data: data}
   }, []);
 

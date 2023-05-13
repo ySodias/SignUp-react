@@ -105,3 +105,12 @@ export const AlunosTreinos = React.lazy(() => {
   .then(([moduleExports]) => moduleExports);
 });
 
+export const Planos = React.lazy(() => {
+  return Promise.all([
+    import('./pages/Planos'),
+    new Promise(resolve => setTimeout(resolve, 1000))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});
+
+
