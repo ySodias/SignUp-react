@@ -83,7 +83,8 @@ const isValid = checkValidForm(username,
     }
     postUsuario(body).then((response)=>{
       if (response.status === 201) {
-        const valorPagamento = Number(plano) == 1 ? 100 : (Number(plano) == 2 ? 85.00 : 79.00)
+        const valorPagamento = Number(plano) == 6 ? 100 : (Number(plano) == 7 ? 85.00 : 79.00)
+        console.log(plano)
         const bodyPagamento = {
           cpf_usuario: cpf,
           data_vencimento: vencimento,

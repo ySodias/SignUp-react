@@ -1,12 +1,10 @@
-// @ts-nocheck
-import React from 'react';
-import { Row, Container, Col, Button, ToggleButtonGroup } from 'react-bootstrap'
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+
+import React, { useEffect, useState } from 'react';
+import { Row, Container, Col } from 'react-bootstrap'
+import { faDollarSign, faEye, faMapLocation } from '@fortawesome/free-solid-svg-icons';
 import CSS from 'csstype';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { link } from '../utils/link';
-import { useModal } from '../hooks/useModal';
-import { pdfGenerate } from '../service/utils';
 
 
 export type BodyHomePros = {}
@@ -29,13 +27,27 @@ const PStyle: CSS.Properties = {
   textAlign: 'justify'
 }
 
-const BorderStyleShare: CSS.Properties = {
-  borderRadius: '70%',
+const PStyleCards: CSS.Properties = {
+  fontWeight: 700,
+  color: 'rgba(0, 0, 0, 0.5)',
+  textAlign: 'justify',
+  height: '31vh'
 }
 
-const message = `https://api.whatsapp.com/send?phone=+551998769-3143&text=${link['localizacao']}`
-
 export const BodyHome: React.FC<BodyHomePros> = () => {
+
+  const [isResponsive, setResponsive] = useState(false)
+
+
+  useEffect(() => {
+    isResponsiveSize()
+  }, [])
+  
+  function isResponsiveSize() {
+    if (document.documentElement.clientHeight > 900) {
+      return setResponsive(true)
+    } else return setResponsive(false)
+  }
 
   return(
     <div>
@@ -44,20 +56,23 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
         src='https://raw.githubusercontent.com/ySodias/SignUp-react/main/src/assets/img/carrosel.png'></img>
       </Row>
       <Container>
+      <Row  className="p-4 mt-5 mb-5 m-4 border" style={BorderStyle}>
+      <a href='/Planos'>      <img src="../../src/assets/img/planos.png" 
+                  width="100%" height="100%" ></img></a>
+
+      </Row>
         <Row> 
           <Col className="p-3">
           <Container >
           <h2 style={H2FontStyle}>Sobre Nós</h2>
           <div className="p-5 border" style={BorderStyle}>
             <p style={PStyle}>
-                Em 2017 a marca Bem-Estar foi adquirida pela rede de academias e artes marciais Olimpia, 
-                que está presente no mercado fitness há 12 anos. Com isso a Bem-Estar passou a se localizar 
-                no mesmo local que a Olimpia, porém ambas ocupam espaços diferentes.
-                Embora ocupem o mesmo espaço físico a academia feminina possui um quadro de funcionários 
-                diferente da rede Olimpia, para tal a mesma tem seus funcionários atuando sobre demanda.
-                Ademais, a academia possui um diferencial, pois em sua região existem poucas academias com 
-                a mesma proposta, que seria atuar somente com o público feminino. Dessa forma a concorrência direta da 
-                academia Bem-Estar proposta de valor.
+            Em 2017 a marca Bem-Estar foi adquirida pela rede de Academias e Artes Marciais Olimpia, que está presente no mercado fitness há mais de 12 anos.Estamos sediados na região do Ouro Verde na cidade de Campinas/SP.
+
+A Academia Bem Estar, tem por objetivo prestação de serviço ao público feminino.
+
+Somos os pioneiros na região em trabalhar com diferentes práticas esportivas, musculação e aeróbicas, voltada exclusivamente para esse público. Tendo em vista que a nossa:
+
             </p>
           </div>
           </Container>
@@ -70,6 +85,53 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
             width="600" height="378" allowFullScreen="" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </Col>
         </Row> 
+        {isResponsive ? <Row className="p-4 mt-5 mb-5 m-4 border" style={BorderStyle}>
+        <Col xs={3} className="pl-3">
+          <div >
+            <p style={PStyleCards}>
+            <FontAwesomeIcon icon={faMapLocation}></FontAwesomeIcon> &nbsp;
+                      MISSÃO
+                      <br />
+                      <br />
+
+          Proporcionar Bem estar físico e mental aos nossos clientes e colaboradores;
+
+          Transformar metas em realidade, criando habitos saudáveis.
+
+            </p></div></Col>
+
+            <Col xs={3} className="pl-3">
+          <div  >
+            <p style={PStyleCards}>
+            <FontAwesomeIcon icon={faEye}></FontAwesomeIcon> &nbsp;
+            VISÃO
+
+            <br />
+            <br />
+
+Consolidar um Grupo forte no setor de academiass para o público feminino, adminiradoe e reconhecido pelos nossos clientes clientes, pelo atendimento diferenciado e ambiente agradável.
+            </p></div></Col>
+
+            <Col xs={6} className="pl-3">
+          <div  >
+            <p style={PStyleCards}>
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>&nbsp;
+            VALORES
+            <br />
+            <br />
+
+Ética e respeito às pessoas: Praticar o bem, respeitando as diferenças e dignidade das pessoas.
+
+Comprometimento: Dar suporte com empenho e responsabilidade as nossas alunas.
+
+Integrirdade: Honrar nossos compromissos e agir com transparência.
+
+Flexibilidade e Inovação: Motivar as ideias, adaptar-se a mudanças que possam surgir e agir com transparência.
+
+Excelência com Simplicidade: Prestar atendimento personalizado, prezando pelo ambiente descobtraído, fazendo nossos clientes sentir-se em casa.
+
+            </p></div></Col>
+        </Row>:''}
       </Container>
     </div>
   )
