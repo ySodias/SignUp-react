@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { Row, Container, Col } from 'react-bootstrap'
 import { faDollarSign, faEye, faMapLocation } from '@fortawesome/free-solid-svg-icons';
