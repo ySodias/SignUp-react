@@ -37,7 +37,7 @@ const Planos: React.FC<ILoginProps > = () => {
         </div>
         <div className="m-5 border" style={BorderStyle}>
         <Row>
-            <img src="https://raw.githubusercontent.com/ySodias/SignUp-react/main/src/assets/img/carroselExercicio.png" 
+            <img src="https://raw.githubusercontent.com/ySodias/SignUp-react/main/src/assets/img/planos.png" 
                   width="100%" height="100%" ></img>
         </Row>
         <h4 className='d-flex justify-content-center pt-3 pb-0 m-0' style={H2FontStyle}>Benefícios</h4>
