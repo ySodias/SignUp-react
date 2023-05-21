@@ -71,7 +71,7 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
 
 A Academia Bem Estar, tem por objetivo prestação de serviço ao público feminino.
 
-Somos os pioneiros na região em trabalhar com diferentes práticas esportivas, musculação e aeróbicas, voltada exclusivamente para esse público. Tendo em vista que a nossa:
+Somos os pioneiros na região em trabalhar com diferentes práticas esportivas, musculação e aeróbicas, voltada exclusivamente para esse público.
 
             </p>
           </div>
