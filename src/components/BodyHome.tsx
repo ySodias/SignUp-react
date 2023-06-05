@@ -44,7 +44,7 @@ export const BodyHome: React.FC<BodyHomePros> = () => {
   }, [])
   
   function isResponsiveSize() {
-    if (document.documentElement.clientHeight > 900) {
+    if (document.documentElement.clientHeight > 765) {
       return setResponsive(true)
     } else return setResponsive(false)
   }
